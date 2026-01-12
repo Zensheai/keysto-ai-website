@@ -223,6 +223,116 @@
             font-weight: 500;
             animation: fadeIn 1s ease-out 0.7s backwards;
         }
+
+        .building-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    animation: fadeInDown 0.6s ease-out;
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-text {
+    text-align: left;
+}
+
+.hero-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-container {
+    position: relative;
+    animation: fadeInRight 0.8s ease-out;
+}
+
+.simone-avatar {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.simone-avatar:hover {
+    transform: scale(1.05);
+}
+
+.avatar-badge {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: #667eea;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    white-space: nowrap;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .building-badge {
+        font-size: 0.8rem;
+        padding: 6px 16px;
+    }
+}
+```
+
+---
+
+## IMPORTANT NOTE
+
+You'll need to replace this placeholder:
+```
+https://via.placeholder.com/400x400
         
         .cta-buttons {
             display: flex;
@@ -678,21 +788,33 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-badge">🚀 Launching January 2025</span>
-                <h1>Unlock AI Automation</h1>
-                <p class="hero-subtitle">
-                    Learn practical AI automation with Simone Keys. No fluff, no theory—just actionable workflows that save you hours every week.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#newsletter" class="btn btn-primary">Join the Newsletter</a>
-                    <a href="#videos" class="btn btn-secondary">Watch Videos</a>
+   <section id="home" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="building-badge">
+                <span>🚀 Building in Public</span>
+            </div>
+            
+            <div class="hero-layout">
+                <div class="hero-text">
+                    <h1 class="hero-title">AI Automation for Solopreneurs Who Actually Run Businesses</h1>
+                    <p class="hero-subtitle">No fluff. No theory. Just practical AI tools and workflows tested in real small businesses. Learn from someone managing a brick-and-mortar business while building this—hosted by Simone Keys, your AI guide.</p>
+                    <div class="hero-cta">
+                        <a href="#newsletter" class="btn btn-primary">Get Free Workflow Templates</a>
+                        <a href="#about" class="btn btn-secondary">Meet Simone & Marsha</a>
+                    </div>
+                </div>
+                
+                <div class="hero-avatar">
+                    <div class="avatar-container">
+                        <img src="https://via.placeholder.com/400x400" alt="Simone Keys - AI Avatar Host" class="simone-avatar">
+                        <div class="avatar-badge">Your AI Guide: Simone Keys</div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- About Section -->
     <section id="about">
