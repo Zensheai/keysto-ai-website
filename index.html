@@ -872,4 +872,9 @@
             });
         }, observerOptions);
 
-        do
+        document.querySelectorAll('.video-card, .feature-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
