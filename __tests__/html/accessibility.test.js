@@ -25,11 +25,27 @@ describe('Accessibility', () => {
             expect(emailInput.getAttribute('placeholder')).toBeTruthy();
         });
 
+        test('email input has type="email" for validation', () => {
+            const emailInput = document.getElementById('email-input');
+            expect(emailInput.getAttribute('type')).toBe('email');
+        });
+
+        test('email input has required attribute', () => {
+            const emailInput = document.getElementById('email-input');
+            expect(emailInput.hasAttribute('required')).toBe(true);
+        });
+
         test('form buttons have descriptive text', () => {
             const buttons = document.querySelectorAll('form button');
             buttons.forEach(btn => {
                 expect(btn.textContent.trim().length).toBeGreaterThan(0);
             });
+        });
+
+        test('form has an id for JavaScript targeting', () => {
+            const form = document.getElementById('newsletter-form');
+            expect(form).not.toBeNull();
+            expect(form.tagName).toBe('FORM');
         });
     });
 
@@ -78,6 +94,27 @@ describe('Accessibility', () => {
                 expect(link.getAttribute('title').trim().length).toBeGreaterThan(0);
             });
         });
+
+        test('navigation links point to valid section ids', () => {
+            const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+            navLinks.forEach(link => {
+                const targetId = link.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetId);
+                expect(targetSection).not.toBeNull();
+            });
+        });
+
+        test('CTA buttons in hero link to valid sections', () => {
+            const heroButtons = document.querySelectorAll('.hero .btn');
+            heroButtons.forEach(btn => {
+                const href = btn.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const targetId = href.substring(1);
+                    const target = document.getElementById(targetId);
+                    expect(target).not.toBeNull();
+                }
+            });
+        });
     });
 
     describe('FAQ buttons', () => {
@@ -86,6 +123,56 @@ describe('Accessibility', () => {
             faqQuestions.forEach(el => {
                 expect(el.tagName).toBe('BUTTON');
             });
+        });
+
+        test('FAQ buttons have visible text content', () => {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(btn => {
+                expect(btn.textContent.trim().length).toBeGreaterThan(0);
+            });
+        });
+
+        test('each FAQ item has both question and answer elements', () => {
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                expect(item.querySelector('.faq-question')).not.toBeNull();
+                expect(item.querySelector('.faq-answer')).not.toBeNull();
+            });
+        });
+    });
+
+    describe('Color contrast and visibility', () => {
+        test('buttons have visible text (not empty)', () => {
+            const buttons = document.querySelectorAll('button, .btn');
+            buttons.forEach(btn => {
+                const text = btn.textContent.trim();
+                expect(text.length).toBeGreaterThan(0);
+            });
+        });
+
+        test('section headers have descriptive text', () => {
+            const sectionHeaders = document.querySelectorAll('.section-header h2');
+            sectionHeaders.forEach(header => {
+                expect(header.textContent.trim().length).toBeGreaterThan(0);
+            });
+        });
+    });
+
+    describe('Interactive elements', () => {
+        test('all interactive elements are focusable', () => {
+            const interactiveElements = document.querySelectorAll('a, button, input');
+            interactiveElements.forEach(el => {
+                // Elements should not have negative tabindex (which would remove from tab order)
+                const tabindex = el.getAttribute('tabindex');
+                if (tabindex !== null) {
+                    expect(parseInt(tabindex)).toBeGreaterThanOrEqual(0);
+                }
+            });
+        });
+
+        test('form submit button has type attribute', () => {
+            const submitBtn = document.querySelector('#newsletter-form button');
+            expect(submitBtn.getAttribute('type')).toBe('submit');
         });
     });
 });

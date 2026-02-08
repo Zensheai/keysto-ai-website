@@ -48,6 +48,48 @@ describe('CSS Design System', () => {
         test('mobile breakpoint at 640px exists', () => {
             expect(html).toContain('max-width: 640px');
         });
+
+        test('media queries use proper syntax', () => {
+            const mediaQueryMatches = html.match(/@media\s*\([^)]+\)/g);
+            expect(mediaQueryMatches).not.toBeNull();
+            expect(mediaQueryMatches.length).toBeGreaterThanOrEqual(2);
+        });
+    });
+
+    describe('Layout styles', () => {
+        test('container has max-width defined', () => {
+            expect(html).toMatch(/\.container\s*\{[^}]*max-width:/);
+        });
+
+        test('feature grid uses CSS grid', () => {
+            expect(html).toMatch(/\.feature-grid\s*\{[^}]*display:\s*grid/);
+        });
+
+        test('video grid uses CSS grid', () => {
+            expect(html).toMatch(/\.video-grid\s*\{[^}]*display:\s*grid/);
+        });
+
+        test('flex is used for navigation layout', () => {
+            expect(html).toMatch(/\.nav-container\s*\{[^}]*display:\s*flex/);
+        });
+    });
+
+    describe('Component styles', () => {
+        test('buttons have hover states', () => {
+            expect(html).toMatch(/\.btn[^{]*:hover\s*\{/);
+        });
+
+        test('cards have visual styling', () => {
+            expect(html).toMatch(/\.video-card\s*\{[^}]*background/);
+        });
+
+        test('FAQ items have styling for active state', () => {
+            expect(html).toMatch(/\.faq-item\.active/);
+        });
+
+        test('newsletter form has styling', () => {
+            expect(html).toMatch(/\.newsletter-form\s*\{/);
+        });
     });
 
     describe('Font configuration', () => {
