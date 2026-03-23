@@ -446,7 +446,7 @@
             margin-bottom: 1rem;
         }
         
-        .feature-item p {
+    2   .feature-item p {
             opacity: 0.8;
             line-height: 1.8;
         }
@@ -1130,53 +1130,44 @@
             </div>
             
            <div class="video-grid">
-    <!-- VIDEO 1 - MIDJOURNEY (LIVE NOW!) -->
-    <a href="https://youtu.be/KTlUnyth0JE" target="_blank" class="video-card">
-        <div class="video-thumbnail">
-            <div class="thumbnail-content">
-                <div class="thumbnail-icon">⚡</div>
-                <span class="thumbnail-label">AI AUTOMATION</span>
-            </div>
+    <!-- VIDEO 1 - MIDJOURNEY -->
+    <a href="https://www.youtube.com/watch?v=vcnCTvfcBPE" target="_blank" class="video-card">
+        <div class="video-thumbnail" style="padding:0;background:none;">
+            <img src="https://img.youtube.com/vi/vcnCTvfcBPE/maxresdefault.jpg" alt="Your First AI Headshot in Midjourney" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
             <div class="play-icon">▶</div>
         </div>
         <div class="video-content">
-            <h3>How to Create Your AI Avatar in Midjourney (Part 1 of 3)</h3>
-            <p>Learn to create a professional AI avatar image using Midjourney - step by step, beginner-friendly tutorial.</p>
-            <span class="video-date">📺 Watch Now</span>
+            <h3>Your First AI Headshot in Midjourney (Tested Prompt Included)</h3>
+            <p>Create a professional AI headshot using Midjourney — tested prompts included, beginner-friendly step by step.</p>
+            <span class="video-date">⚡ AI WORKFLOW &nbsp;|&nbsp; 📺 Watch Now</span>
         </div>
     </a>
     
-    <!-- VIDEO 2 - ELEVENLABS (COMING IN 2-3 DAYS) -->
-    <a href="https://youtu.be/vcnCTvfcBPE" target="_blank" class="video-card" style="opacity: 0.7;">
-        <div class="video-thumbnail">
-            <div class="thumbnail-content">
-                <div class="thumbnail-icon">🛠️</div>
-                <span class="thumbnail-label">TOOL TUTORIAL</span>
-            </div>
+    <!-- VIDEO 2 - ELEVENLABS -->
+    <a href="https://www.youtube.com/watch?v=KTlUnyth0JE" target="_blank" class="video-card">
+        <div class="video-thumbnail" style="padding:0;background:none;">
+            <img src="https://img.youtube.com/vi/KTlUnyth0JE/maxresdefault.jpg" alt="ElevenLabs Voice Design: Build Your Perfect AI Voice" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
             <div class="play-icon">▶</div>
         </div>
         <div class="video-content">
-            <h3>Create Your Custom AI Voice in ElevenLabs (Part 2 of 3)</h3>
-            <p>Generate a natural-sounding AI voice for your avatar using ElevenLabs Voice Design - step by step.</p>
-            <span class="video-date">🔜 Coming in 2-3 Days</span>
+            <h3>ElevenLabs Voice Design: Build Your Perfect AI Voice</h3>
+            <p>Generate a natural-sounding AI voice using ElevenLabs Voice Design — step by step tutorial.</p>
+            <span class="video-date">🛠️ TOOL TUTORIAL &nbsp;|&nbsp; 📺 Watch Now</span>
         </div>
     </a>
     
-    <!-- VIDEO 3 - HEYGEN (COMING SOON) -->
-    <div class="video-card" style="opacity: 0.5; cursor: not-allowed;">
-        <div class="video-thumbnail">
-            <div class="thumbnail-content">
-                <div class="thumbnail-icon">🚀</div>
-                <span class="thumbnail-label">WORKFLOW</span>
-            </div>
+    <!-- VIDEO 3 - HEYGEN -->
+    <a href="https://www.youtube.com/watch?v=R0EmUT4EX2g" target="_blank" class="video-card">
+        <div class="video-thumbnail" style="padding:0;background:none;">
+            <img src="https://img.youtube.com/vi/R0EmUT4EX2g/maxresdefault.jpg" alt="Bring Your AI Avatar to Life with HeyGen (Full Tutorial 2026)" style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;">
             <div class="play-icon">▶</div>
         </div>
         <div class="video-content">
-            <h3>Animate Your AI Avatar in HeyGen (Part 3 of 3)</h3>
-            <p>Bring your avatar to life with HeyGen animation - complete the full AI avatar creation system.</p>
-            <span class="video-date">🔜 Coming Soon</span>
+            <h3>Bring Your AI Avatar to Life with HeyGen (Full Tutorial 2026)</h3>
+            <p>Bring your avatar to life with HeyGen animation — the complete AI avatar creation workflow.</p>
+            <span class="video-date">🚀 AI WORKFLOW &nbsp;|&nbsp; 📺 Watch Now</span>
         </div>
-    </div>
+    </a>
 </div>
     </section>
 
@@ -1257,10 +1248,7 @@
             <div class="newsletter">
                 <h2>Stay Updated</h2>
                 <p>Get notified when new tutorials drop. Plus exclusive tips and workflows you won't find anywhere else.</p>
-                <form class="newsletter-form" id="newsletter-form">
-                    <input type="email" id="email-input" placeholder="Enter your email" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
+                <script async data-uid="f02d941479" src="https://keys-to-ai.kit.com/f02d941479/index.js"></script>
             </div>
         </div>
     </section>
@@ -1275,7 +1263,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>© 2025 Keys to AI. Empowering solopreneurs with practical AI automation.</p>
+                <p>© 2026 Keys to AI. Empowering solopreneurs with practical AI automation.</p>
             </div>
         </div>
     </footer>
@@ -1299,16 +1287,7 @@
             });
         });
 
-        // Newsletter form submission
-        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('email-input').value;
-            
-            // TODO: Replace this with your ConvertKit form endpoint
-            // For now, just show a success message
-            alert(`Thanks for subscribing! We'll send updates to ${email}`);
-            this.reset();
-        });
+        // Newsletter handled by Kit embed
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
