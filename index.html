@@ -200,9 +200,8 @@
         }
         
         .hero h1 {
-            font-size: 64px;
+            font-size: clamp(40px, 5vw, 64px);
             margin-bottom: 1.5rem;
-            white-space: nowrap;
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -212,8 +211,17 @@
         .hero p {
             font-size: 24px;
             color: var(--light);
-            margin-bottom: 2.5rem;
+            margin-bottom: 0;
             opacity: 0.9;
+        }
+
+        .hero-social-proof {
+            font-size: 16px;
+            color: #E8EBF7;
+            opacity: 0.7;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 2.5rem;
         }
         
         .cta-buttons {
@@ -882,7 +890,6 @@
 
             .hero h1 {
                 font-size: 40px;
-                white-space: normal;
             }
 
             .hero p {
@@ -1001,10 +1008,11 @@
             <div class="hero-content fade-in-up">
                 <div class="launch-badge">Now Live! New Videos Weekly</div>
                 <h1>AI Workflows That Save You 10+ Hours Per Week</h1>
-                <p>Step-by-step automation for solopreneurs who want results without overwhelm.</p>
+                <p>Simple workflows that save you hours every week—no tech degree required.</p>
+                <p class="hero-social-proof">Trusted by 1,000+ solopreneurs</p>
                 <div class="cta-buttons">
-                    <a href="#newsletter" class="btn btn-primary">Join the Newsletter</a>
-                    <a href="#videos" class="btn btn-secondary">Watch Videos</a>
+                    <a href="#starter-kit" class="btn btn-primary">Get the Free AI Starter Kit</a>
+                    <a href="#videos" class="btn btn-secondary">Watch Free Tutorial</a>
                 </div>
             </div>
         </div>
