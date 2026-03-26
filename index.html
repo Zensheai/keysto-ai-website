@@ -838,6 +838,98 @@
             color: rgba(224, 231, 255, 0.5);
         }
         
+        /* Kit Newsletter Form — Center & Brand Override */
+        .newsletter [data-uid],
+        .newsletter .formkit-form {
+            width: 100% !important;
+            max-width: 560px !important;
+            margin: 0 auto !important;
+            text-align: center !important;
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+        }
+
+        .newsletter .formkit-fields {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 0.75rem !important;
+            justify-content: center !important;
+        }
+
+        .newsletter .formkit-field {
+            flex: 1 !important;
+            min-width: 240px !important;
+        }
+
+        .newsletter .formkit-input {
+            width: 100% !important;
+            padding: 1rem 1.5rem !important;
+            border-radius: 12px !important;
+            border: 1px solid rgba(0, 217, 255, 0.3) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+            color: #fff !important;
+            font-size: 1rem !important;
+            font-family: 'Inter', sans-serif !important;
+            outline: none !important;
+            transition: border-color 0.3s, box-shadow 0.3s !important;
+        }
+
+        .newsletter .formkit-input:focus {
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 30px rgba(0, 217, 255, 0.2) !important;
+        }
+
+        .newsletter .formkit-input::placeholder {
+            color: rgba(224, 231, 255, 0.5) !important;
+        }
+
+        .newsletter .formkit-submit {
+            padding: 1rem 2.5rem !important;
+            border-radius: 12px !important;
+            border: none !important;
+            background: linear-gradient(135deg, #00D9FF 0%, #7B2FF7 100%) !important;
+            color: #0A0E27 !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            font-family: 'Inter', sans-serif !important;
+            cursor: pointer !important;
+            transition: transform 0.3s, box-shadow 0.3s !important;
+            white-space: nowrap !important;
+        }
+
+        .newsletter .formkit-submit:hover {
+            transform: translateY(-3px) !important;
+            box-shadow: 0 15px 50px rgba(0, 217, 255, 0.4) !important;
+        }
+
+        .newsletter .formkit-guarantee,
+        .newsletter .formkit-powered-by-convertkit {
+            margin-top: 1rem !important;
+            opacity: 0.5 !important;
+            font-size: 0.8rem !important;
+            color: var(--light) !important;
+            text-align: center !important;
+        }
+
+        .newsletter .formkit-alert {
+            text-align: center !important;
+            padding: 0.75rem 1.5rem !important;
+            border-radius: 10px !important;
+            margin-top: 1rem !important;
+        }
+
+        @media (max-width: 640px) {
+            .newsletter .formkit-fields {
+                flex-direction: column !important;
+            }
+            .newsletter .formkit-field,
+            .newsletter .formkit-submit {
+                width: 100% !important;
+                min-width: unset !important;
+            }
+        }
+
         /* Footer */
         footer {
             background: rgba(10, 14, 39, 0.5);
@@ -1414,7 +1506,9 @@
             <div class="newsletter">
                 <h2>Get Your Free AI Workflow Starter Pack</h2>
                 <p>Join 1,000+ solopreneurs getting weekly AI workflows, tools, and ready-to-use templates—delivered straight to your inbox. Free, always.</p>
-                <script async data-uid="f02d941479" src="https://keys-to-ai.kit.com/f02d941479/index.js"></script>
+                <div style="display:flex; justify-content:center; width:100%;">
+                    <script async data-uid="f02d941479" src="https://keys-to-ai.kit.com/f02d941479/index.js"></script>
+                </div>
             </div>
         </div>
     </section>
