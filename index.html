@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Keys to AI - Stop Doing Busywork. Start Running an AI-Powered Business.</title>
+    <meta name="description" content="Free AI automation workflows for solopreneurs. Learn how to save 10+ hours a week with no-code tools—no tech degree required. New tutorials every week.">
+    <link rel="canonical" href="https://keysto.ai">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0' stop-color='%2300D9FF'/><stop offset='1' stop-color='%237B2FF7'/></linearGradient></defs><circle cx='38' cy='38' r='20' fill='none' stroke='url(%23g)' stroke-width='10'/><line x1='53' y1='53' x2='80' y2='80' stroke='url(%23g)' stroke-width='10' stroke-linecap='round'/><line x1='68' y1='73' x2='76' y2='65' stroke='url(%23g)' stroke-width='9' stroke-linecap='round'/></svg>">
+    <meta property="og:title" content="Keys to AI — AI Workflows That Save You 10+ Hours Per Week">
+    <meta property="og:description" content="Free AI automation tutorials for solopreneurs. No code. No corporate budget. Real results.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://keysto.ai">
+    <meta property="og:image" content="https://keysto.ai/simone_keys.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Keys to AI — AI Workflows That Save You 10+ Hours Per Week">
+    <meta name="twitter:description" content="Free AI automation tutorials for solopreneurs. No code. No corporate budget. Real results.">
+    <meta name="twitter:image" content="https://keysto.ai/simone_keys.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -118,6 +130,19 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+        }
+
+        .logo-text {
             font-size: 1.5rem;
             font-weight: 800;
             font-family: 'Syne', sans-serif;
@@ -883,6 +908,70 @@
         }
 
         /* Responsive Design */
+        /* Mobile Nav Hamburger */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0.25rem;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .nav-hamburger.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .nav-hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .nav-mobile {
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            background: rgba(10, 14, 39, 0.98);
+            border-top: 1px solid rgba(0, 217, 255, 0.1);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            padding: 1rem 0;
+        }
+
+        .nav-mobile.open {
+            display: flex;
+        }
+
+        .nav-mobile a {
+            padding: 0.9rem 2rem;
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.07);
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .nav-mobile a:hover {
+            color: var(--primary);
+            background: rgba(0, 217, 255, 0.05);
+        }
+
         @media (max-width: 968px) {
             .about-grid {
                 grid-template-columns: 1fr;
@@ -908,6 +997,10 @@
 
             .nav-links {
                 display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
             }
 
             section {
@@ -993,25 +1086,49 @@
 
     <nav>
         <div class="nav-container">
-            <div class="logo">Keys to AI</div>
+            <a href="#" class="logo">
+                <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" stop-color="#00D9FF"/>
+                            <stop offset="1" stop-color="#7B2FF7"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="38" cy="38" r="20" fill="none" stroke="url(#logo-grad)" stroke-width="10"/>
+                    <line x1="53" y1="53" x2="80" y2="80" stroke="url(#logo-grad)" stroke-width="10" stroke-linecap="round"/>
+                    <line x1="68" y1="73" x2="76" y2="65" stroke="url(#logo-grad)" stroke-width="9" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-text">Keys to AI</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#videos">Videos</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#newsletter">Newsletter</a></li>
             </ul>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="nav-mobile" id="nav-mobile">
+            <a href="#about">About</a>
+            <a href="#videos">Videos</a>
+            <a href="#faq">FAQ</a>
+            <a href="#newsletter">Newsletter</a>
         </div>
     </nav>
 
     <section class="hero">
         <div class="container">
             <div class="hero-content fade-in-up">
-                <div class="launch-badge">Now Live! New Videos Weekly</div>
+                <div class="launch-badge">New Tutorials Every Week</div>
                 <h1>AI Workflows That Save You 10+ Hours Per Week</h1>
                 <p>Simple workflows that save you hours every week—no tech degree required.</p>
                 <p class="hero-social-proof">Trusted by 1,000+ solopreneurs</p>
                 <div class="cta-buttons">
-                    <a href="#starter-kit" class="btn btn-primary">Get the Free AI Starter Kit</a>
+                    <a href="#newsletter" class="btn btn-primary">Get Free AI Workflows</a>
                     <a href="#videos" class="btn btn-secondary">Watch Free Tutorial</a>
                 </div>
             </div>
@@ -1052,7 +1169,7 @@
             
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="simone_keys.png" alt="Simone Keys - Your AI Automation Guide">
+                    <img src="simone_keys.png" alt="Simone Keys - Your AI Automation Guide" loading="lazy" width="600" height="600">
                 </div>
                 
                 <div class="about-content">
@@ -1071,25 +1188,6 @@
                 </div>
             </div>
             
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">🎯</div>
-                    <h4>From Stuck to Unstuck</h4>
-                    <p>Stop spinning your wheels—start automating what drains you</p>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon">💰</div>
-                    <h4>Smart, Not Expensive</h4>
-                    <p>Enterprise results with solopreneur budgets—it's possible</p>
-                </div>
-                
-                <div class="feature-item">
-                    <div class="feature-icon">⚡</div>
-                    <h4>Work Less, Live More</h4>
-                    <p>Get your evenings and weekends back without sacrificing growth</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1140,41 +1238,41 @@
     <section>
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Proof in Action</span>
+                <span class="section-tag">Community Results</span>
                 <h2>Real Wins from Real Workflows</h2>
                 <p>These aren't hypotheticals—this is what's actually working</p>
             </div>
-            
+
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <p class="testimonial-text">"I automated my entire client onboarding process using the exact workflow Simone showed. Now when someone fills out my contact form, they get a proposal, contract, and payment link—automatically. I've reclaimed 8 hours every week."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">M</div>
                         <div class="author-info">
-                            <h5>Marsha (That's Me!)</h5>
-                            <p>Founder, Keys to AI</p>
+                            <h5>Marsha B.</h5>
+                            <p>Freelance Consultant</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimonial-card">
                     <p class="testimonial-text">"My content calendar used to take an entire day to plan. Now I spend 90 minutes with Claude, and I have a month of content mapped out—including titles, outlines, and social posts. This saved me 10+ hours this month alone."</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">M</div>
+                        <div class="author-avatar">T</div>
                         <div class="author-info">
-                            <h5>Marsha</h5>
-                            <p>Content Creator</p>
+                            <h5>Tanya M.</h5>
+                            <p>Freelance Content Creator</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="testimonial-card">
                     <p class="testimonial-text">"I was spending 3 hours a week managing my newsletter—writing, formatting, scheduling. Now my AI workflow handles everything from draft to delivery. I just review and approve. That's 12 hours back every month."</p>
                     <div class="testimonial-author">
                         <div class="author-avatar">S</div>
                         <div class="author-info">
                             <h5>Simone Keys</h5>
-                            <p>Your AI Guide</p>
+                            <p>Founder, Keys to AI</p>
                         </div>
                     </div>
                 </div>
@@ -1190,6 +1288,13 @@
                 <p>New tutorials every week. Subscribe on YouTube to never miss an episode.</p>
             </div>
             
+            <div style="text-align:center; margin-bottom: 1rem;">
+                <a href="https://youtube.com/@KeystoAIOfficial" target="_blank" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:0.6rem;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/></svg>
+                    Subscribe on YouTube
+                </a>
+            </div>
+
            <div class="video-grid">
     <!-- VIDEO 1 - MIDJOURNEY -->
     <a href="https://www.youtube.com/watch?v=vcnCTvfcBPE" target="_blank" class="video-card">
@@ -1297,7 +1402,7 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>I publish 3 new videos every week starting January 2025. Subscribe to the newsletter below to get notified, plus you'll get exclusive tips and workflows I don't share anywhere else.</p>
+                        <p>New videos drop every week. Subscribe to the newsletter below to get notified first, plus you'll get exclusive tips and workflows I don't share anywhere else.</p>
                     </div>
                 </div>
             </div>
@@ -1307,8 +1412,8 @@
     <section id="newsletter">
         <div class="container">
             <div class="newsletter">
-                <h2>Stay Updated</h2>
-                <p>Get notified when new tutorials drop. Plus exclusive tips and workflows you won't find anywhere else.</p>
+                <h2>Get Your Free AI Workflow Starter Pack</h2>
+                <p>Join 1,000+ solopreneurs getting weekly AI workflows, tools, and ready-to-use templates—delivered straight to your inbox. Free, always.</p>
                 <script async data-uid="f02d941479" src="https://keys-to-ai.kit.com/f02d941479/index.js"></script>
             </div>
         </div>
@@ -1318,9 +1423,15 @@
         <div class="container">
             <div class="footer-content">
                 <div class="social-links">
-                    <a href="https://youtube.com/@KeystoAIOfficial" target="_blank" title="YouTube">▶</a>
-                    <a href="https://instagram.com/keystoaiofficial" target="_blank" title="Instagram">📷</a>
-                    <a href="mailto:contact@keysto.ai" title="Email Us">✉</a>
+                    <a href="https://youtube.com/@KeystoAIOfficial" target="_blank" title="YouTube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.75 15.5V8.5l6.25 3.5-6.25 3.5z"/></svg>
+                    </a>
+                    <a href="https://instagram.com/keystoaiofficial" target="_blank" title="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                    </a>
+                    <a href="mailto:contact@keysto.ai" title="Email Us">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+                    </a>
                 </div>
             </div>
             <div class="copyright">
@@ -1330,6 +1441,20 @@
     </footer>
 
     <script>
+        // Mobile Nav Toggle
+        const hamburger = document.getElementById('nav-hamburger');
+        const mobileNav = document.getElementById('nav-mobile');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+        });
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileNav.classList.remove('open');
+            });
+        });
+
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(button => {
             button.addEventListener('click', () => {
