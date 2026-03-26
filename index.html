@@ -132,25 +132,12 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
             text-decoration: none;
         }
 
-        .logo-icon {
-            width: 28px;
-            height: 28px;
-            flex-shrink: 0;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 800;
-            font-family: 'Syne', sans-serif;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
+        .logo img {
+            height: 44px;
+            width: auto;
         }
         
         .nav-links {
@@ -1179,18 +1166,7 @@
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">
-                <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logo-grad" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                            <stop offset="0" stop-color="#00D9FF"/>
-                            <stop offset="1" stop-color="#7B2FF7"/>
-                        </linearGradient>
-                    </defs>
-                    <circle cx="38" cy="38" r="20" fill="none" stroke="url(#logo-grad)" stroke-width="10"/>
-                    <line x1="53" y1="53" x2="80" y2="80" stroke="url(#logo-grad)" stroke-width="10" stroke-linecap="round"/>
-                    <line x1="68" y1="73" x2="76" y2="65" stroke="url(#logo-grad)" stroke-width="9" stroke-linecap="round"/>
-                </svg>
-                <span class="logo-text">Keys to AI</span>
+                <img src="keystoai_officicial_logo.png" alt="Keys to AI — AI Workflows Made Simple">
             </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
