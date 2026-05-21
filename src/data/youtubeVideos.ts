@@ -50,7 +50,7 @@ export const youtubeVideos: YouTubeVideo[] = [
     duration: "",
     publishLabel: "",
     description:
-      "HeyGen tutorial for creating a more useful AI avatar workflow for content."
+      "Step-by-step HeyGen tutorial for building your AI avatar workflow."
   },
   {
     title: "Build Your AI Avatar Voice Without Sounding Robotic",
@@ -62,7 +62,7 @@ export const youtubeVideos: YouTubeVideo[] = [
     duration: "",
     publishLabel: "",
     description:
-      "A Keys to AI tutorial for creating a more natural AI avatar voice workflow."
+      "How to design a natural-sounding AI voice for your content."
   },
   {
     title: "Your First AI Headshot in Midjourney (Tested Prompt Included)",
@@ -74,6 +74,6 @@ export const youtubeVideos: YouTubeVideo[] = [
     duration: "",
     publishLabel: "",
     description:
-      "A Keys to AI tutorial for creating an AI headshot with a tested Midjourney prompt."
+      "Create a professional AI headshot using a tested Midjourney prompt."
   }
 ];
