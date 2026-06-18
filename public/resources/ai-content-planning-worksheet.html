@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Content Planning Worksheet — Keys to AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #1c1917;
+    --bg-warm: #faf7f2;
+    --bg-cream: #f2ece4;
+    --surface: #fffcf7;
+    --amber: #f59e0b;
+    --amber-light: #fef3c7;
+    --amber-mid: #fde68a;
+    --teal: #14b8a6;
+    --teal-light: #ccfbf1;
+    --teal-mid: #99f6e4;
+    --text-primary: #1c1917;
+    --text-secondary: #78716c;
+    --text-muted: #a8a29e;
+    --border-subtle: #e7e5e4;
+    --border-dark: #44403c;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-warm);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(28,25,23,0.08);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--bg-dark);
+    padding: 2.5rem 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 40px solid rgba(245,158,11,0.12);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; left: 60px;
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    border: 24px solid rgba(20,184,166,0.08);
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .brand-icon {
+    width: 32px; height: 32px;
+    background: var(--amber);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--bg-dark);
+  }
+  .brand-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--bg-warm);
+    line-height: 1.15;
+    margin-bottom: 0.75rem;
+    position: relative;
+    z-index: 1;
+  }
+  .header h1 em {
+    color: var(--amber);
+    font-style: italic;
+  }
+  .header-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+  }
+  .badge-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  .badge-amber { color: var(--amber); border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.1); }
+  .badge-teal { color: var(--teal); border-color: rgba(20,184,166,0.35); background: rgba(20,184,166,0.1); }
+
+  /* ── BODY ── */
+  .body { padding: 2.5rem 3rem; }
+
+  /* ── SECTION HEADER ── */
+  .section {
+    margin-bottom: 2.5rem;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1.5px solid var(--border-subtle);
+  }
+  .section-num {
+    width: 28px; height: 28px;
+    background: var(--amber);
+    color: var(--bg-dark);
+    border-radius: 50%;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+  .section-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-left: auto;
+  }
+
+  /* ── FIELD GRID ── */
+  .field-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  .field-grid.two-col { grid-template-columns: 1fr 1fr; }
+  .field-grid.three-col { grid-template-columns: 1fr 1fr 1fr; }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .field label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+  }
+  .field label span.req {
+    color: var(--amber);
+    margin-left: 2px;
+  }
+  .field input[type="text"],
+  .field input[type="date"],
+  .field select,
+  .field textarea {
+    background: var(--bg-warm);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+    resize: none;
+  }
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: var(--teal);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(20,184,166,0.08);
+  }
+  .field textarea.sm { min-height: 64px; }
+  .field textarea.md { min-height: 90px; }
+  .field textarea.lg { min-height: 110px; }
+  .field .hint {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ── CHECKBOX GROUP ── */
+  .check-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .check-pill {
+    position: relative;
+  }
+  .check-pill input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+  .check-pill label {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 6px 13px;
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-warm);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+    text-transform: none;
+    letter-spacing: 0;
+    font-family: 'Inter', sans-serif;
+  }
+  .check-pill input:checked + label {
+    background: var(--teal-light);
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  /* ── SCORE ROW ── */
+  .score-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: var(--bg-warm);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  .score-label {
+    flex: 1;
+    font-size: 13px;
+    color: var(--text-primary);
+  }
+  .score-btns {
+    display: flex;
+    gap: 4px;
+  }
+  .score-btn {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border-subtle);
+    background: var(--white);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.12s;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Inter', sans-serif;
+  }
+  .score-btn:hover { border-color: var(--amber); color: var(--amber); }
+  .score-btn.active { background: var(--amber); border-color: var(--amber); color: var(--bg-dark); }
+
+  /* ── HOOKS BOX ── */
+  .hooks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .hook-card {
+    background: var(--amber-light);
+    border: 1px solid var(--amber-mid);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .hook-card .hook-type {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .hook-card textarea {
+    width: 100%;
+    min-height: 60px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--amber-mid);
+    border-radius: 0;
+    padding: 4px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--text-primary);
+    resize: none;
+    outline: none;
+  }
+  .hook-card textarea:focus { border-bottom-color: var(--amber); }
+
+  /* ── AI PROMPT BLOCK ── */
+  .ai-block {
+    background: var(--bg-dark);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .ai-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ai-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .ai-block textarea {
+    width: 100%;
+    min-height: 80px;
+    background: transparent;
+    border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--teal);
+    resize: none;
+    outline: none;
+    line-height: 1.7;
+  }
+
+  /* ── CTA BLOCK ── */
+  .cta-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .cta-card {
+    background: var(--bg-cream);
+    border: 1.5px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .cta-card.selected {
+    background: var(--teal-light);
+    border-color: var(--teal);
+  }
+  .cta-card .cta-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .cta-card .cta-ex {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+  .cta-card.selected .cta-name { color: var(--teal); }
+
+  /* ── STATUS BAR ── */
+  .status-bar {
+    background: var(--bg-warm);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+  .status-label { font-size: 12px; color: var(--text-secondary); }
+  .status-options { display: flex; gap: 8px; }
+  .status-opt {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+    background: var(--white);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .status-opt.active-idea { background: var(--amber-light); border-color: var(--amber); color: var(--text-primary); }
+  .status-opt.active-scripting { background: #fecaca; border-color: #f87171; color: #991b1b; }
+  .status-opt.active-filming { background: var(--teal-light); border-color: var(--teal); color: var(--text-primary); }
+  .status-opt.active-published { background: #dbeafe; border-color: #93c5fd; color: #1e3a8a; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border-subtle);
+    margin: 2rem 0;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--bg-dark);
+    padding: 1.25rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--bg-warm);
+  }
+  .footer-brand span { color: var(--amber); font-style: italic; }
+  .footer-url {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .print-btn {
+    background: var(--amber);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .print-btn:hover { background: #d97706; }
+  .print-btn svg { width: 15px; height: 15px; fill: currentColor; }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {
+    background: var(--bg-warm);
+    padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .progress-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-secondary); white-space: nowrap; }
+  .progress-track {
+    flex: 1;
+    height: 6px;
+    background: var(--border-subtle);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--amber);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+  .progress-pct { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 400; color: var(--amber); min-width: 34px; text-align: right; }
+
+  /* ── SCORE TOTAL ── */
+  .score-total-box {
+    background: var(--bg-warm);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  .score-total-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+  .score-total-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--amber);
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; }
+    .print-btn { display: none; }
+    .progress-wrap { display: none; }
+    input, textarea, select { border-color: #ccc !important; }
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 1rem; }
+    .header { padding: 2rem 1.5rem 1.5rem; }
+    .body { padding: 1.5rem; }
+    .footer { padding: 1rem 1.5rem; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+    .progress-wrap { padding: 0.75rem 1.5rem; }
+    .field-grid.two-col,
+    .field-grid.three-col,
+    .hooks-grid,
+    .cta-options { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page" id="worksheet">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand-row">
+      <div class="brand-icon">K</div>
+      <span class="brand-name">Keys to AI</span>
+    </div>
+    <h1>AI Content Planning<br><em>Worksheet</em></h1>
+    <p class="header-sub">Plan smarter. Create faster. Show up consistently — with AI doing the heavy lifting.</p>
+    <div class="badge-row">
+      <span class="badge badge-amber">Free Resource</span>
+      <span class="badge badge-teal">keysto.ai</span>
+    </div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <span class="progress-label">Worksheet progress</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-pct" id="progressPct">0%</span>
+  </div>
+
+  <div class="body">
+
+    <!-- SECTION 1: VIDEO BASICS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">1</div>
+        <span class="section-title">The Big Idea</span>
+        <span class="section-sub">What are we making?</span>
+      </div>
+
+      <div class="status-bar">
+        <span class="status-label">Production status:</span>
+        <div class="status-options">
+          <span class="status-opt" onclick="setStatus(this,'idea','active-idea')">💡 Idea</span>
+          <span class="status-opt" onclick="setStatus(this,'scripting','active-scripting')">✍️ Scripting</span>
+          <span class="status-opt" onclick="setStatus(this,'filming','active-filming')">🎬 Filming</span>
+          <span class="status-opt" onclick="setStatus(this,'published','active-published')">✅ Published</span>
+        </div>
+      </div>
+
+      <div class="field-grid two-col" style="margin-bottom:1rem;">
+        <div class="field">
+          <label>Working Title <span class="req">*</span></label>
+          <input type="text" placeholder="e.g. How I Plan a Month of Content in 20 Min" class="trackable">
+        </div>
+        <div class="field">
+          <label>Target Publish Date</label>
+          <input type="date" class="trackable">
+        </div>
+      </div>
+
+      <div class="field-grid three-col" style="margin-bottom:1rem;">
+        <div class="field">
+          <label>Video Format</label>
+          <select class="trackable">
+            <option value="">Select format…</option>
+            <option>Beginner Tutorial</option>
+            <option>Tool Review</option>
+            <option>How-To Workflow</option>
+            <option>Comparison</option>
+            <option>Is It Worth It?</option>
+            <option>Advanced Deep Dive</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Target Length</label>
+          <select class="trackable">
+            <option value="">Select length…</option>
+            <option>Short (under 5 min)</option>
+            <option>Standard (8–10 min)</option>
+            <option>Deep Dive (15+ min)</option>
+            <option>Short-Form (60 sec)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Primary Tool Featured</label>
+          <input type="text" placeholder="e.g. Claude, Make.com, HeyGen…" class="trackable">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Core Promise — What will the viewer be able to DO after watching? <span class="req">*</span></label>
+        <textarea class="sm trackable" placeholder="After watching this video, you'll be able to…"></textarea>
+      </div>
+    </div>
+
+    <!-- SECTION 2: AUDIENCE + PAIN -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">2</div>
+        <span class="section-title">Who You're Talking To</span>
+        <span class="section-sub">Lock in the audience</span>
+      </div>
+
+      <div class="field-grid two-col" style="margin-bottom:1rem;">
+        <div class="field">
+          <label>Audience Level</label>
+          <select class="trackable">
+            <option value="">Select level…</option>
+            <option>Complete Beginner (never used AI)</option>
+            <option>Beginner (heard of AI, tried basics)</option>
+            <option>Intermediate (uses AI tools regularly)</option>
+            <option>Advanced (builds automations)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Audience Type</label>
+          <select class="trackable">
+            <option value="">Select type…</option>
+            <option>Solopreneur / Freelancer</option>
+            <option>Small Business Owner</option>
+            <option>Content Creator</option>
+            <option>Side Hustler</option>
+            <option>9–5 Employee (exploring AI)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field" style="margin-bottom:1rem;">
+        <label>Pain Point — What frustration, struggle, or question is this video solving? <span class="req">*</span></label>
+        <textarea class="sm trackable" placeholder="My audience is struggling with… / They keep asking me about…"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Channels this person will find this video on</label>
+        <div class="check-group">
+          <div class="check-pill"><input type="checkbox" id="ch-yt" class="trackable"><label for="ch-yt">YouTube Long-form</label></div>
+          <div class="check-pill"><input type="checkbox" id="ch-short" class="trackable"><label for="ch-short">YouTube Shorts</label></div>
+          <div class="check-pill"><input type="checkbox" id="ch-ig" class="trackable"><label for="ch-ig">Instagram Reels</label></div>
+          <div class="check-pill"><input type="checkbox" id="ch-tt" class="trackable"><label for="ch-tt">TikTok</label></div>
+          <div class="check-pill"><input type="checkbox" id="ch-fb" class="trackable"><label for="ch-fb">Facebook</label></div>
+          <div class="check-pill"><input type="checkbox" id="ch-x" class="trackable"><label for="ch-x">X (Twitter)</label></div>
+          <div class="check-pill"><input type="checkbox" id="ch-li" class="trackable"><label for="ch-li">LinkedIn</label></div>
+          <div class="check-pill"><input type="checkbox" id="ch-email" class="trackable"><label for="ch-email">Email List</label></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: HOOKS -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">3</div>
+        <span class="section-title">The Hook (First 30 Seconds)</span>
+        <span class="section-sub">Stop the scroll</span>
+      </div>
+      <p style="font-size:12.5px; color:var(--text-secondary); margin-bottom:1rem; font-style:italic;">Write at least two hook options. You can use the AI prompt below to generate more. Pick the strongest before scripting.</p>
+
+      <div class="hooks-grid" style="margin-bottom:1rem;">
+        <div class="hook-card">
+          <div class="hook-type">🎯 Bold Claim Hook</div>
+          <textarea placeholder="Most people are doing [X] completely wrong — and it's costing them hours every week."></textarea>
+        </div>
+        <div class="hook-card">
+          <div class="hook-type">❓ Question Hook</div>
+          <textarea placeholder="What if you could [outcome] in under [time frame]?"></textarea>
+        </div>
+        <div class="hook-card">
+          <div class="hook-type">😤 Pain Hook</div>
+          <textarea placeholder="If you've ever wasted hours trying to [X], this one's for you."></textarea>
+        </div>
+        <div class="hook-card">
+          <div class="hook-type">✅ Proof / Result Hook</div>
+          <textarea placeholder="I used AI to [achieve result] in [time] — here's exactly how."></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Loop Open (tease for later in the video)</label>
+        <input type="text" class="trackable" placeholder="And I'm going to show you the one thing most people miss — we'll get to that at the [X]-minute mark.">
+        <span class="hint">Plant this between 45–60 seconds in. Deliver it before the 70% mark.</span>
+      </div>
+    </div>
+
+    <!-- SECTION 4: CONTENT OUTLINE -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">4</div>
+        <span class="section-title">Content Outline</span>
+        <span class="section-sub">The bones of the video</span>
+      </div>
+
+      <div class="field-grid" style="margin-bottom:1rem;">
+        <div class="field">
+          <label>Key Point 1</label>
+          <input type="text" class="trackable" placeholder="e.g. Why most people's AI prompts fail (the setup problem)">
+        </div>
+        <div class="field">
+          <label>Key Point 2</label>
+          <input type="text" class="trackable" placeholder="e.g. The 3-part framework that fixes it">
+        </div>
+        <div class="field">
+          <label>Key Point 3</label>
+          <input type="text" class="trackable" placeholder="e.g. Live demo — building the workflow step by step">
+        </div>
+        <div class="field">
+          <label>Key Point 4 (optional)</label>
+          <input type="text" class="trackable" placeholder="e.g. Common mistakes + how to avoid them">
+        </div>
+      </div>
+
+      <div class="field-grid two-col">
+        <div class="field">
+          <label>Pattern Interrupt 1 (30–40% mark)</label>
+          <input type="text" class="trackable" placeholder="e.g. Bold stat, tone shift, direct question…">
+        </div>
+        <div class="field">
+          <label>Pattern Interrupt 2 (60–70% mark)</label>
+          <input type="text" class="trackable" placeholder="e.g. "Real talk — here's where most people quit…"">
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: AI CONTENT ASSIST -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">5</div>
+        <span class="section-title">AI Prompt — Let Claude Help</span>
+        <span class="section-sub">Copy → paste → create</span>
+      </div>
+      <p style="font-size:12.5px; color:var(--text-secondary); margin-bottom:1rem;">Copy this prompt (filled in from your answers above) and drop it into Claude to generate your script outline, titles, or full script.</p>
+
+      <div class="ai-block">
+        <div class="ai-label"><div class="ai-dot"></div> Claude Prompt Template</div>
+        <textarea id="aiPrompt">You are a professional copywriter and scriptwriter for a brand that teaches solopreneurs and small business owners practical AI workflows.
+
+VIDEO DETAILS:
+- Topic/Title: [fill from Section 1]
+- Format: [fill from Section 1]
+- Target Length: [fill from Section 1]
+- Featured Tool: [fill from Section 1]
+
+AUDIENCE:
+- Level: [fill from Section 2]
+- Pain Point: [fill from Section 2]
+
+HOOK (use my strongest one):
+[paste your chosen hook from Section 3]
+
+LOOP OPEN:
+[paste from Section 3]
+
+OUTLINE:
+1. [Key Point 1]
+2. [Key Point 2]
+3. [Key Point 3]
+
+Write a full word-for-word YouTube script — warm, confident, straight-talking. Use a HeyGen scene format with avatar cues, scene numbers, and [AVATAR]/[SCREEN] markers. Include two pattern interrupts and a mid-video subscribe CTA.</textarea>
+      </div>
+
+      <div class="field">
+        <label>Notes from Claude's output (paste key takeaways or edits here)</label>
+        <textarea class="md trackable" placeholder="Paste script notes, title options, or key lines to keep…"></textarea>
+      </div>
+    </div>
+
+    <!-- SECTION 6: TITLE + SEO -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">6</div>
+        <span class="section-title">Titles + SEO</span>
+        <span class="section-sub">Click-worthy from search</span>
+      </div>
+
+      <div class="field-grid" style="margin-bottom:1rem;">
+        <div class="field">
+          <label>Title Option 1 <span class="req">*</span></label>
+          <input type="text" class="trackable" placeholder="50–60 characters, keyword near the front…">
+        </div>
+        <div class="field">
+          <label>Title Option 2</label>
+          <input type="text" class="trackable" placeholder="Try a different formula…">
+        </div>
+        <div class="field">
+          <label>Title Option 3</label>
+          <input type="text" class="trackable" placeholder="Wildcard — most curiosity-driven…">
+        </div>
+      </div>
+
+      <div class="field-grid two-col" style="margin-bottom:1rem;">
+        <div class="field">
+          <label>Primary Keyword</label>
+          <input type="text" class="trackable" placeholder="e.g. AI content planning">
+        </div>
+        <div class="field">
+          <label>Secondary Keywords</label>
+          <input type="text" class="trackable" placeholder="e.g. solopreneur AI, Claude AI workflow">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Thumbnail Text Concept (3–5 words max)</label>
+        <input type="text" class="trackable" placeholder="e.g. PLAN A MONTH IN 20 MIN">
+        <span class="hint">Bold, punchy, readable at thumbnail size. Must work without the title.</span>
+      </div>
+    </div>
+
+    <!-- SECTION 7: CTA STRATEGY -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">7</div>
+        <span class="section-title">Call to Action Strategy</span>
+        <span class="section-sub">One ask per moment</span>
+      </div>
+
+      <p style="font-size:12.5px; color:var(--text-secondary); margin-bottom:0.75rem; font-style:italic;">Select the primary action for each moment. Never stack two CTAs at the same time.</p>
+
+      <div style="margin-bottom:1rem;">
+        <div style="font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-secondary); margin-bottom:8px;">Mid-Video CTA (40–60% mark)</div>
+        <div class="cta-options" id="ctaMid">
+          <div class="cta-card" onclick="selectCTA(this,'mid')">
+            <div class="cta-name">Subscribe</div>
+            <div class="cta-ex">"Hit subscribe if you want more…"</div>
+          </div>
+          <div class="cta-card" onclick="selectCTA(this,'mid')">
+            <div class="cta-name">Free Resource</div>
+            <div class="cta-ex">"Grab the free [X] at keysto.ai…"</div>
+          </div>
+          <div class="cta-card" onclick="selectCTA(this,'mid')">
+            <div class="cta-name">Affiliate Tool</div>
+            <div class="cta-ex">"Link to [tool] in description…"</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-secondary); margin-bottom:8px;">End-of-Video CTA</div>
+        <div class="cta-options" id="ctaEnd">
+          <div class="cta-card" onclick="selectCTA(this,'end')">
+            <div class="cta-name">Like + Subscribe</div>
+            <div class="cta-ex">"If this helped, smash like + subscribe"</div>
+          </div>
+          <div class="cta-card" onclick="selectCTA(this,'end')">
+            <div class="cta-name">Watch Next</div>
+            <div class="cta-ex">"Watch this video next →"</div>
+          </div>
+          <div class="cta-card" onclick="selectCTA(this,'end')">
+            <div class="cta-name">Comment Prompt</div>
+            <div class="cta-ex">"Tell me in the comments: [question]"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 8: PRIORITY SCORE -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">8</div>
+        <span class="section-title">Content Priority Score</span>
+        <span class="section-sub">Should you make this now?</span>
+      </div>
+      <p style="font-size:12.5px; color:var(--text-secondary); margin-bottom:1rem; font-style:italic;">Rate each factor 1–5. Total score helps you decide production order when you have multiple ideas.</p>
+
+      <div class="score-row">
+        <span class="score-label">🔥 Audience Demand — Are people actively asking about this?</span>
+        <div class="score-btns" data-key="demand"></div>
+      </div>
+      <div class="score-row">
+        <span class="score-label">💰 Revenue Potential — Does this support an affiliate, product, or upsell?</span>
+        <div class="score-btns" data-key="revenue"></div>
+      </div>
+      <div class="score-row">
+        <span class="score-label">🎯 SEO Opportunity — Is this keyword underserved on YouTube?</span>
+        <div class="score-btns" data-key="seo"></div>
+      </div>
+      <div class="score-row">
+        <span class="score-label">⚡ Production Ease — How quickly can you script + film this?</span>
+        <div class="score-btns" data-key="ease"></div>
+      </div>
+      <div class="score-row">
+        <span class="score-label">🌱 Evergreen Value — Will this video still be relevant in 12 months?</span>
+        <div class="score-btns" data-key="evergreen"></div>
+      </div>
+
+      <div class="score-total-box">
+        <span class="score-total-label">Total Priority Score</span>
+        <span class="score-total-value" id="totalScore">0 / 25</span>
+      </div>
+      <p style="font-size:11px; color:var(--text-muted); margin-top:6px; font-style:italic;">0–10: Park for later · 11–17: Plan next quarter · 18–22: Make soon · 23–25: Drop everything and film this</p>
+    </div>
+
+    <!-- SECTION 9: PRODUCTION CHECKLIST -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">9</div>
+        <span class="section-title">Pre-Production Checklist</span>
+        <span class="section-sub">Ready to hand off to your agents?</span>
+      </div>
+
+      <div class="field-grid two-col">
+        <div>
+          <div class="check-group" style="flex-direction:column;">
+            <div class="check-pill"><input type="checkbox" id="c1" class="trackable"><label for="c1">Working title locked</label></div>
+            <div class="check-pill"><input type="checkbox" id="c2" class="trackable"><label for="c2">Pain point clearly defined</label></div>
+            <div class="check-pill"><input type="checkbox" id="c3" class="trackable"><label for="c3">Hook options written (2+)</label></div>
+            <div class="check-pill"><input type="checkbox" id="c4" class="trackable"><label for="c4">Content outline completed</label></div>
+            <div class="check-pill"><input type="checkbox" id="c5" class="trackable"><label for="c5">AI prompt drafted + tested</label></div>
+          </div>
+        </div>
+        <div>
+          <div class="check-group" style="flex-direction:column;">
+            <div class="check-pill"><input type="checkbox" id="c6" class="trackable"><label for="c6">Title options (3) ready</label></div>
+            <div class="check-pill"><input type="checkbox" id="c7" class="trackable"><label for="c7">Thumbnail text concept set</label></div>
+            <div class="check-pill"><input type="checkbox" id="c8" class="trackable"><label for="c8">CTA strategy decided</label></div>
+            <div class="check-pill"><input type="checkbox" id="c9" class="trackable"><label for="c9">Sent to copywriter for scripting</label></div>
+            <div class="check-pill"><input type="checkbox" id="c10" class="trackable"><label for="c10">Publish date on calendar</label></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOTES -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <span class="section-title">Extra Notes / Ideas</span>
+      </div>
+      <div class="field">
+        <textarea class="lg trackable" placeholder="B-roll ideas, sponsorship notes, future video ideas sparked by this one, affiliate links to include…"></textarea>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">Keys to <span>AI</span></div>
+    <span class="footer-url">keysto.ai · @KeystoAIOfficial · Free Resource</span>
+    <button class="print-btn" onclick="window.print()">
+      <svg viewBox="0 0 24 24"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg>
+      Print / Save PDF
+    </button>
+  </div>
+
+</div>
+
+<script>
+  // Score buttons
+  document.querySelectorAll('.score-btns').forEach(group => {
+    for (let i = 1; i <= 5; i++) {
+      const btn = document.createElement('button');
+      btn.className = 'score-btn';
+      btn.textContent = i;
+      btn.dataset.val = i;
+      btn.onclick = () => {
+        group.querySelectorAll('.score-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updateScore();
+      };
+      group.appendChild(btn);
+    }
+  });
+
+  function updateScore() {
+    let total = 0;
+    document.querySelectorAll('.score-btn.active').forEach(b => total += parseInt(b.dataset.val));
+    document.getElementById('totalScore').textContent = total + ' / 25';
+  }
+
+  // Status buttons
+  function setStatus(el, key, cls) {
+    const btns = el.parentElement.querySelectorAll('.status-opt');
+    btns.forEach(b => {
+      b.className = 'status-opt';
+    });
+    el.classList.add(cls);
+  }
+
+  // CTA selection
+  function selectCTA(el, group) {
+    const parent = document.getElementById('cta' + group.charAt(0).toUpperCase() + group.slice(1));
+    parent.querySelectorAll('.cta-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  // Progress tracking
+  function updateProgress() {
+    const trackable = document.querySelectorAll('.trackable');
+    let filled = 0;
+    trackable.forEach(el => {
+      if (el.type === 'checkbox') { if (el.checked) filled++; }
+      else if (el.value && el.value.trim() !== '') filled++;
+    });
+    const pct = Math.round((filled / trackable.length) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressPct').textContent = pct + '%';
+  }
+
+  document.querySelectorAll('.trackable').forEach(el => {
+    el.addEventListener('input', updateProgress);
+    el.addEventListener('change', updateProgress);
+  });
+</script>
+
+</body>
+</html>

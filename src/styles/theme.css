@@ -1,0 +1,30 @@
+/* Keys to AI v2 brand palette — single source of truth for all site colors.
+   Change a value here to retheme the whole site. */
+:root {
+  /* Core brand */
+  --c-deep-navy: #0D1B2A;   /* dark base: page / video backgrounds */
+  --c-terracotta: #C4603A;  /* CTA buttons, highlights, primary accent */
+  --c-emerald: #1A6B4A;     /* secondary accent, links, section labels */
+  --c-champagne: #F0E6C8;   /* light sections, body text on dark, cards */
+
+  /* Derived */
+  --c-emerald-deep: #134A33; /* darker emerald: gradient ends, hovers */
+
+  /* Navy-tinted neutrals (replace original warm-stone greys) */
+  --c-navy-700: #16283A; /* elevated dark surface */
+  --c-navy-600: #2A3C4D; /* borders on dark */
+  --c-navy-500: #3E4E5E; /* muted text */
+
+  /* Space-separated RGB triples — the original Tailwind CSS expresses most
+     colors as `rgb(R G B / <alpha>)`, so these mirror the hex values above and
+     let the alpha-aware utilities stay on-brand AND single-source.
+     Keep each triple in sync with its hex counterpart. */
+  --c-deep-navy-rgb: 13 27 42;     /* #0D1B2A */
+  --c-terracotta-rgb: 196 96 58;   /* #C4603A */
+  --c-emerald-rgb: 26 107 74;      /* #1A6B4A */
+  --c-champagne-rgb: 240 230 200;  /* #F0E6C8 */
+  --c-emerald-deep-rgb: 19 74 51;  /* #134A33 */
+  --c-navy-700-rgb: 22 40 58;      /* #16283A */
+  --c-navy-600-rgb: 42 60 77;      /* #2A3C4D */
+  --c-navy-500-rgb: 62 78 94;      /* #3E4E5E */
+}
