@@ -149,8 +149,8 @@ export const site = {
 
   social: {
     youtube: YT_CHANNEL,
-    x: "https://x.com", // TODO confirm real handle with Marsha (go-live open item)
-    instagram: "https://instagram.com", // TODO confirm real handle with Marsha (go-live open item)
+    x: "https://x.com/to_keys94370",
+    instagram: "https://www.instagram.com/keystoaiofficial/",
   },
 
   hero: {
