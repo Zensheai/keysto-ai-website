@@ -64,7 +64,8 @@
 
   /* ---------- tab bar ---------- */
   .tabbar{position:sticky;top:0;z-index:50;background:rgba(13,27,42,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(240,230,200,.12)}
-  .tabbar .inner{max-width:1120px;margin:0 auto;display:flex;gap:6px;padding:0 20px;overflow-x:auto}
+  .tabbar .inner{max-width:1120px;margin:0 auto;display:flex;justify-content:center;gap:6px;padding:0 20px;overflow-x:auto}
+  @media(max-width:600px){.tabbar .inner{justify-content:flex-start}}
   .tab{
     appearance:none;background:none;border:none;cursor:pointer;font-family:var(--body);
     color:rgba(240,230,200,.62);font-weight:700;font-size:.92rem;letter-spacing:.01em;
