@@ -25,7 +25,11 @@ export default async function handler(req, res) {
   // Optional per-resource group id from the request, else fall back to the env default.
   const requestedGroup = req.body && typeof req.body.group === "string" && req.body.group.trim();
   const groupId = requestedGroup || process.env.MAILERLITE_GROUP_ID;
-  const payload = groupId ? { email, groups: [groupId] } : { email };
+  // Optional first name → MailerLite's standard "name" field (use {$name} in emails).
+  const name = req.body && typeof req.body.name === "string" && req.body.name.trim();
+  const payload = { email };
+  if (groupId) payload.groups = [groupId];
+  if (name) payload.fields = { name };
 
   try {
     const r = await fetch("https://connect.mailerlite.com/api/subscribers", {

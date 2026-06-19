@@ -16,6 +16,7 @@ type ResourceItem = {
 
 function ResourceCard({ item }: { item: ResourceItem }) {
   const [stage, setStage] = useState<"idle" | "form" | "done">("idle");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -24,7 +25,7 @@ function ResourceCard({ item }: { item: ResourceItem }) {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    const result = await subscribe(email, item.group || undefined);
+    const result = await subscribe(email, item.group || undefined, name.trim() || undefined);
     setLoading(false);
     if (result.ok) {
       setStage("done");
@@ -61,6 +62,24 @@ function ResourceCard({ item }: { item: ResourceItem }) {
             onSubmit={handleSubmit}
             style={{ display: "flex", flexDirection: "column", gap: "8px" }}
           >
+            <input
+              type="text"
+              value={name}
+              placeholder="First name (optional)"
+              aria-label="First name (optional)"
+              autoComplete="given-name"
+              onChange={(e) => setName(e.target.value)}
+              className="font-body text-sm"
+              style={{
+                width: "100%",
+                padding: "10px 12px",
+                borderRadius: "10px",
+                border: "1.5px solid rgba(240,230,200,0.25)",
+                background: "rgba(240,230,200,0.06)",
+                color: "#F0E6C8",
+                outline: "none",
+              }}
+            />
             <input
               type="email"
               required
@@ -105,6 +124,7 @@ function ResourceCard({ item }: { item: ResourceItem }) {
                 onClick={() => {
                   setStage("idle");
                   setError(null);
+                  setName("");
                 }}
                 className="font-body text-sm"
                 style={{

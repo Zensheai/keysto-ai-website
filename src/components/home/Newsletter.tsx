@@ -5,6 +5,7 @@ import { subscribe } from "../../lib/subscribe";
 const { newsletter } = site;
 
 export default function Newsletter() {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -14,11 +15,14 @@ export default function Newsletter() {
     e.preventDefault();
     setIsLoading(true);
     setMessage(null);
-    const result = await subscribe(email);
+    const result = await subscribe(email, undefined, name.trim() || undefined);
     setIsSuccess(result.ok);
     setMessage(result.message);
     setIsLoading(false);
-    if (result.ok) setEmail("");
+    if (result.ok) {
+      setEmail("");
+      setName("");
+    }
   }
 
   return (
@@ -54,22 +58,30 @@ export default function Newsletter() {
             </p>
 
             {/* Form */}
-            <form
-              className="flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto"
-              onSubmit={handleSubmit}
-            >
-              <input
-                type="email"
-                placeholder={newsletter.placeholder}
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full sm:flex-1 bg-white/15 border border-white/25 rounded-lg px-4 py-3.5 text-white placeholder:text-white/50 font-body text-sm focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-200"
-              />
+            <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <input
+                  type="text"
+                  placeholder="First name (optional)"
+                  aria-label="First name (optional)"
+                  autoComplete="given-name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="w-full sm:flex-1 bg-white/15 border border-white/25 rounded-lg px-4 py-3.5 text-white placeholder:text-white/50 font-body text-sm focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-200"
+                />
+                <input
+                  type="email"
+                  placeholder={newsletter.placeholder}
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full sm:flex-1 bg-white/15 border border-white/25 rounded-lg px-4 py-3.5 text-white placeholder:text-white/50 font-body text-sm focus:outline-none focus:border-white/50 focus:bg-white/20 transition-all duration-200"
+                />
+              </div>
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full sm:w-auto bg-bg-dark text-bg-warm font-body font-medium text-sm px-6 py-3.5 rounded-lg hover:bg-surface-dark transition-colors duration-200 whitespace-nowrap disabled:opacity-50"
+                className="w-full bg-bg-dark text-bg-warm font-body font-medium text-sm px-6 py-3.5 rounded-lg hover:bg-surface-dark transition-colors duration-200 whitespace-nowrap disabled:opacity-50 mt-3"
               >
                 {isLoading ? "Sending…" : newsletter.button}
               </button>
