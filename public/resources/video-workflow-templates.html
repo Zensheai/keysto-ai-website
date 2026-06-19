@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Workflow Templates — Keys to AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --emerald:#1A6B4A;--terracotta:#C4603A;--terracotta-deep:#A84E2C;
+    --champagne:#F0E6C8;--champagne-soft:#F7F1DF;--navy:#0D1B2A;--ink:#1c2230;--muted:#5c6472;
+    --line:rgba(13,27,42,.12);--card:#fffdf7;
+    --display:"Fraunces",Georgia,serif;--body:"Hanken Grotesk",-apple-system,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--champagne);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;padding:2rem 1rem 4rem}
+  .page{max-width:860px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 20px 60px rgba(13,27,42,.12)}
+  .header{background:var(--navy);color:var(--champagne);padding:34px 40px}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .brand .key{width:28px;height:28px;border-radius:7px;background:linear-gradient(145deg,var(--emerald),var(--terracotta));display:grid;place-items:center;font-family:var(--display);font-weight:900;color:#fff;font-size:15px}
+  .brand b{font-weight:800;letter-spacing:.2px}
+  .header .eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px}
+  .header h1{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.05;letter-spacing:-.02em}
+  .header p{color:rgba(240,230,200,.78);margin-top:10px;max-width:56ch;font-size:.98rem}
+  .body{padding:30px 40px}
+  .progress{position:sticky;top:12px;z-index:5;background:var(--champagne-soft);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin-bottom:26px}
+  .progress .row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+  .progress b{color:var(--navy)}
+  .progress .num{font-family:var(--display);font-weight:700;color:var(--terracotta-deep)}
+  .bar{height:9px;border-radius:999px;background:#e6dcbf;overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--emerald);border-radius:999px;transition:width .4s ease}
+  .phase{border:1px solid var(--line);border-radius:16px;margin-top:16px;overflow:hidden;background:#fff}
+  .phase .head{display:flex;align-items:center;gap:13px;padding:16px 18px;background:var(--champagne-soft);border-bottom:1px solid var(--line)}
+  .phase .n{flex:none;width:30px;height:30px;border-radius:9px;background:var(--emerald);color:#fff;font-family:var(--display);font-weight:700;display:grid;place-items:center}
+  .phase .head b{font-size:1.08rem;color:var(--navy)}
+  .phase .head span{display:block;font-size:.82rem;color:var(--muted);font-weight:500}
+  .phase .items{padding:8px 18px 16px}
+  .chk{display:flex;gap:11px;align-items:flex-start;padding:9px 0;cursor:pointer}
+  .chk input{appearance:none;flex:none;width:20px;height:20px;border:2px solid var(--line);border-radius:6px;cursor:pointer;margin-top:1px;position:relative;transition:.15s}
+  .chk input:checked{background:var(--emerald);border-color:var(--emerald)}
+  .chk input:checked::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:800}
+  .chk span{font-size:.94rem;color:var(--ink)}
+  .chk input:checked + span{color:var(--muted);text-decoration:line-through}
+  .tmpl{margin-top:30px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .tmpl .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;background:var(--navy)}
+  .tmpl .top b{color:#fff}
+  .copy{font-family:var(--body);font-weight:700;font-size:.8rem;border:1.5px solid var(--champagne);color:var(--champagne);background:transparent;border-radius:9px;padding:6px 13px;cursor:pointer;transition:.15s}
+  .copy:hover,.copy.done{background:var(--champagne);color:var(--navy)}
+  .tmpl pre{padding:18px;font-family:var(--mono);font-size:.84rem;line-height:1.7;color:var(--ink);white-space:pre-wrap;background:#fff;margin:0}
+  footer{padding:22px 40px 30px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+  footer b{color:var(--ink)}
+  @media(max-width:560px){.header,.body,footer{padding-left:22px;padding-right:22px}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="brand"><span class="key">K</span><b>Keys to AI</b></div>
+    <div class="eyebrow">Free Resource</div>
+    <h1>Video Workflow Templates</h1>
+    <p>The simple, repeatable system behind every Keys to AI video — from idea to repurposed shorts.</p>
+  </div>
+
+  <div class="body">
+    <div class="progress">
+      <div class="row"><b>Your progress</b><span class="num"><span id="done">0</span> / <span id="total">0</span></span></div>
+      <div class="bar"><i id="fill"></i></div>
+    </div>
+
+    <div id="phases"></div>
+
+    <div class="tmpl">
+      <div class="top"><b>Copy: one-page video brief</b><button class="copy" id="copyBrief">Copy</button></div>
+      <pre id="brief">VIDEO BRIEF — [VIDEO TITLE]
+
+Hook (first line):  [the bold promise or question]
+Who it's for:       [audience + the problem they have]
+One takeaway:       [the single thing they'll learn]
+Call to action:     [what they do next]
+
+Sections:
+  1. [section]
+  2. [section]
+  3. [section]
+
+Resources to link:  [worksheet / tool / playlist]
+Repurpose into:     [3 shorts + 1 post + 1 email]</pre>
+    </div>
+  </div>
+
+  <footer>
+    <b>Keys to AI</b> — Practical AI workflows for solopreneurs. Reuse this system for every video; check the boxes as you go and copy the brief for each new idea.
+  </footer>
+</div>
+
+<script>
+  var PHASES=[
+    {n:"1",title:"Capture the idea",sub:"Before you script anything",items:[
+      "Write the hook in one sentence","Name the audience and their problem","Pick the single takeaway","Confirm it serves the channel + a next step"]},
+    {n:"2",title:"Script it",sub:"Structure beats blank-page panic",items:[
+      "Open with the hook (no warm-up)","Draft 3 clear sections","Add one real example or demo","End with a clear call to action"]},
+    {n:"3",title:"Record",sub:"Camera or avatar",items:[
+      "Record in short, re-takeable chunks","Capture any screen demos separately","Keep B-roll/asset notes as you go"]},
+    {n:"4",title:"Edit",sub:"Tighten and brand",items:[
+      "Cut dead air and stumbles","Add captions and on-screen text","Apply brand colors + intro/outro"]},
+    {n:"5",title:"Publish",sub:"Make it findable",items:[
+      "Title + thumbnail that match the hook","Description with the resource link","Chapters + tags","Pin a comment with the CTA"]},
+    {n:"6",title:"Repurpose",sub:"One video, many posts",items:[
+      "Cut 3 shorts from the best moments","Write 1 social post","Send 1 newsletter with the link"]}
+  ];
+
+  var wrap=document.getElementById("phases"), total=0;
+  PHASES.forEach(function(p){
+    total+=p.items.length;
+    var ph=document.createElement("div"); ph.className="phase";
+    var items=p.items.map(function(it){return '<label class="chk"><input type="checkbox"><span>'+it+'</span></label>';}).join("");
+    ph.innerHTML='<div class="head"><span class="n">'+p.n+'</span><div><b>'+p.title+'</b><span>'+p.sub+'</span></div></div><div class="items">'+items+'</div>';
+    wrap.appendChild(ph);
+  });
+  document.getElementById("total").textContent=total;
+
+  function tally(){
+    var done=document.querySelectorAll(".chk input:checked").length;
+    document.getElementById("done").textContent=done;
+    document.getElementById("fill").style.width=(total?done/total*100:0)+"%";
+  }
+  document.querySelectorAll(".chk input").forEach(function(i){i.addEventListener("change",tally);});
+
+  var cb=document.getElementById("copyBrief");
+  cb.addEventListener("click",function(){
+    navigator.clipboard.writeText(document.getElementById("brief").textContent).then(function(){
+      cb.textContent="Copied ✓"; cb.classList.add("done");
+      setTimeout(function(){cb.textContent="Copy";cb.classList.remove("done");},1600);
+    });
+  });
+</script>
+</body>
+</html>

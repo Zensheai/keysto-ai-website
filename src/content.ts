@@ -254,11 +254,15 @@ export const site = {
     title: "Download the worksheets, prompt packs, and checklists mentioned on YouTube.",
     intro: "Curated companion materials. Built to help viewers turn a tutorial into a practical next step.",
     worksheetUrl: "/resources/ai-content-planning-worksheet.html",
+    // `file` = the resource delivered after email capture (served from /public/resources).
+    // `group` = optional MailerLite group id; fill it to route this resource's subscribers
+    // to a group (e.g. for an automated email that sends the file). Empty = default list only.
     items: [
-      { icon: "📋", tag: "UPDATED THIS WEEK", title: "AI content planning worksheet", desc: "Plan topics, angles, tools, and repurposing notes.", cta: "Send it to me →" },
-      { icon: "☑", tag: "POPULAR WORKFLOW", title: "Automation audit checklist", desc: "Find the repetitive tasks worth automating first.", cta: "Send it to me →" },
-      { icon: "❯", tag: "CREATOR NOTE", title: "Prompt pack for solopreneurs", desc: "Reusable prompts for planning, writing, and review.", cta: "Send it to me →" },
-      { icon: "▶", tag: "FROM TUTORIALS", title: "Video workflow templates", desc: "Simple systems pulled from Keys to AI walkthroughs.", cta: "Send it to me →" },
+      { icon: "📋", tag: "UPDATED THIS WEEK", title: "AI content planning worksheet", desc: "Plan topics, angles, tools, and repurposing notes.", cta: "Send it to me →", file: "/resources/ai-content-planning-worksheet.html", group: "" },
+      { icon: "☑", tag: "POPULAR WORKFLOW", title: "Automation audit checklist", desc: "Find the repetitive tasks worth automating first.", cta: "Send it to me →", file: "/resources/automation-audit-checklist.html", group: "" },
+      { icon: "❯", tag: "CREATOR NOTE", title: "Prompt pack for solopreneurs", desc: "Reusable prompts for planning, writing, and review.", cta: "Send it to me →", file: "/resources/prompt-pack-for-solopreneurs.html", group: "" },
+      { icon: "▶", tag: "FROM TUTORIALS", title: "Video workflow templates", desc: "Simple systems pulled from Keys to AI walkthroughs.", cta: "Send it to me →", file: "/resources/video-workflow-templates.html", group: "" },
+      { icon: "🧰", tag: "INTERACTIVE TOOLKIT", title: "Solopreneur Business Toolkit", desc: "Rate calculator, project scorer, and 50-state tax estimator — all in one.", cta: "Send it to me →", file: "/resources/solopreneur-toolkit.html", group: "" },
     ],
   },
 

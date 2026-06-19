@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solopreneur Business Toolkit | Keys to AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --emerald:#1A6B4A;
+    --emerald-deep:#13533A;
+    --terracotta:#C4603A;
+    --terracotta-deep:#A84E2C;
+    --champagne:#F0E6C8;
+    --champagne-soft:#F7F1DF;
+    --navy:#0D1B2A;
+    --navy-soft:#16293C;
+    --ink:#1c2230;
+    --muted:#5c6472;
+    --green:#1A6B4A;
+    --orange:#C4603A;
+    --red:#B23A48;
+    --line:rgba(13,27,42,.12);
+    --card:#fffdf7;
+    --shadow:0 1px 2px rgba(13,27,42,.04), 0 12px 30px rgba(13,27,42,.08);
+    --shadow-lg:0 30px 70px rgba(13,27,42,.18);
+    --display:"Fraunces", Georgia, serif;
+    --body:"Hanken Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);color:var(--ink);background:var(--champagne);line-height:1.55;
+    -webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 600px at 85% -5%, rgba(26,107,74,.10), transparent 60%),
+      radial-gradient(700px 500px at -5% 110%, rgba(196,96,58,.10), transparent 55%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:1}
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    background:var(--navy);color:var(--champagne);padding:14px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    border-bottom:1px solid rgba(240,230,200,.12);
+  }
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.2px}
+  .brand .key{
+    width:30px;height:30px;border-radius:8px;background:linear-gradient(145deg,var(--emerald),var(--terracotta));
+    display:grid;place-items:center;font-family:var(--display);font-weight:900;color:#fff;font-size:16px;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .brand span small{display:block;font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,230,200,.6);margin-top:-2px}
+  .topbar .pill{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--champagne);border:1px solid rgba(240,230,200,.28);padding:6px 13px;border-radius:999px;white-space:nowrap}
+
+  /* ---------- tab bar ---------- */
+  .tabbar{position:sticky;top:0;z-index:50;background:rgba(13,27,42,.97);backdrop-filter:blur(8px);border-bottom:1px solid rgba(240,230,200,.12)}
+  .tabbar .inner{max-width:1120px;margin:0 auto;display:flex;gap:6px;padding:0 20px;overflow-x:auto}
+  .tab{
+    appearance:none;background:none;border:none;cursor:pointer;font-family:var(--body);
+    color:rgba(240,230,200,.62);font-weight:700;font-size:.92rem;letter-spacing:.01em;
+    padding:16px 18px;white-space:nowrap;position:relative;transition:color .18s;display:flex;align-items:center;gap:9px;
+  }
+  .tab .tnum{width:22px;height:22px;border-radius:6px;background:rgba(240,230,200,.12);display:grid;place-items:center;font-size:.78rem;transition:.18s}
+  .tab:hover{color:var(--champagne)}
+  .tab[aria-selected="true"]{color:#fff}
+  .tab[aria-selected="true"] .tnum{background:var(--emerald);color:#fff}
+  .tab[aria-selected="true"]::after{content:"";position:absolute;left:14px;right:14px;bottom:0;height:3px;border-radius:3px 3px 0 0;background:linear-gradient(90deg,var(--emerald),var(--terracotta))}
+
+  /* ---------- hero ---------- */
+  .hero{max-width:1120px;margin:0 auto;padding:54px 28px 20px;text-align:center}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--terracotta-deep);margin-bottom:18px}
+  .eyebrow::before,.eyebrow::after{content:"—";opacity:.45;margin:0 10px}
+  .hero h1{font-family:var(--display);font-weight:600;font-size:clamp(2.2rem,5.6vw,4rem);line-height:1.04;letter-spacing:-.02em;color:var(--navy)}
+  .hero h1 em{font-style:italic;color:var(--emerald)}
+  .hero p{max-width:600px;margin:20px auto 0;font-size:clamp(1rem,1.6vw,1.15rem);color:var(--muted)}
+
+  /* ---------- shell ---------- */
+  .shell{max-width:1120px;margin:0 auto;padding:14px 28px 80px}
+  .tab-panel{display:none}
+  .tab-panel.active{display:block;animation:fade .45s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:clamp(24px,4vw,46px);margin-bottom:30px;position:relative;overflow:hidden}
+  .panel.feature{box-shadow:var(--shadow-lg)}
+
+  .step-tag{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--emerald);margin-bottom:8px}
+  .step-tag b{width:24px;height:24px;border-radius:7px;background:var(--emerald);color:#fff;display:grid;place-items:center;font-size:12px}
+  .panel h2{font-family:var(--display);font-weight:600;font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.015em;color:var(--navy);line-height:1.1}
+  .panel .sub{color:var(--muted);margin-top:7px;max-width:62ch;font-size:1rem}
+
+  /* ---------- experience cards ---------- */
+  .levels{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px}
+  .level{position:relative;text-align:left;cursor:pointer;border-radius:18px;border:1.5px solid var(--line);background:var(--champagne-soft);padding:18px 17px 16px;transition:transform .18s,border-color .18s,box-shadow .18s,background .18s}
+  .level:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(13,27,42,.10)}
+  .level .lvl-name{font-weight:800;font-size:1.04rem;color:var(--navy);letter-spacing:-.01em}
+  .level .lvl-desc{font-size:.82rem;color:var(--muted);margin:5px 0 13px;min-height:34px}
+  .level .lvl-range{font-family:var(--display);font-weight:600;font-size:1.18rem;color:var(--emerald)}
+  .level .lvl-range span{font-size:.74rem;font-family:var(--body);color:var(--muted);font-weight:600;display:block;text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
+  .level .tick{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;transition:.18s}
+  .level .tick svg{width:12px;height:12px;opacity:0;transform:scale(.4);transition:.18s}
+  .level[aria-pressed="true"]{border-color:var(--emerald);background:#fff;box-shadow:0 0 0 3px rgba(26,107,74,.14),0 16px 30px rgba(13,27,42,.10)}
+  .level[aria-pressed="true"] .tick{background:var(--emerald);border-color:var(--emerald)}
+  .level[aria-pressed="true"] .tick svg{opacity:1;transform:scale(1);stroke:#fff}
+
+  /* ---------- sliders ---------- */
+  .sliders{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:30px}
+  .field .flabel{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:11px}
+  .field .flabel .name{font-weight:700;color:var(--navy);font-size:.98rem}
+  .field .flabel .hint{display:block;font-weight:500;font-size:.8rem;color:var(--muted);margin-top:1px}
+  .field .flabel .val{font-family:var(--display);font-weight:600;font-size:1.3rem;color:var(--terracotta-deep);white-space:nowrap}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:999px;background:linear-gradient(var(--emerald),var(--emerald)) 0/var(--fill,40%) 100% no-repeat,#e6dcbf;cursor:pointer;outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid var(--emerald);box-shadow:0 3px 8px rgba(13,27,42,.22);transition:transform .12s}
+  input[type=range]::-webkit-slider-thumb:active{transform:scale(1.16)}
+  input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--emerald);box-shadow:0 3px 8px rgba(13,27,42,.22);cursor:pointer}
+  .field .scale{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-top:7px;font-weight:600}
+
+  /* ---------- results ---------- */
+  .results-head{display:flex;align-items:center;gap:14px;margin:38px 0 22px}
+  .results-head .line{flex:1;height:1px;background:var(--line)}
+  .results-head .txt{font-family:var(--display);font-weight:600;color:var(--navy);font-size:1.45rem}
+  .results{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .rcard{border-radius:18px;padding:22px 20px;border:1px solid var(--line);background:var(--champagne-soft);position:relative;overflow:hidden}
+  .rcard .rlabel{font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+  .rcard .rnum{font-family:var(--display);font-weight:700;font-size:clamp(1.7rem,3.4vw,2.4rem);letter-spacing:-.02em;color:var(--navy);margin-top:8px;line-height:1}
+  .rcard .rsuf{font-size:.85rem;color:var(--muted);font-weight:600;margin-top:5px}
+  .rcard.hero-rate{background:var(--navy);border-color:var(--navy)}
+  .rcard.hero-rate .rlabel{color:rgba(240,230,200,.7)}
+  .rcard.hero-rate .rnum{color:var(--champagne)}
+  .rcard.hero-rate .rsuf{color:rgba(240,230,200,.65)}
+  .rcard.hero-rate::after{content:"★ recommended";position:absolute;top:13px;right:-30px;transform:rotate(40deg);background:var(--terracotta);color:#fff;font-size:.6rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 34px}
+
+  /* ---------- market comparison ---------- */
+  .market{margin-top:22px;border-radius:18px;padding:20px 22px;display:flex;gap:16px;align-items:flex-start;border:1.5px solid var(--line);background:var(--champagne-soft);transition:.25s}
+  .market .dot{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:20px}
+  .market .mtitle{font-weight:800;color:var(--navy);font-size:1.06rem}
+  .market .mbody{color:var(--muted);font-size:.95rem;margin-top:3px}
+  .market .mbody b{color:var(--ink)}
+  .market.within,.market.above{border-color:rgba(26,107,74,.4);background:rgba(26,107,74,.07)}
+  .market.within .dot,.market.above .dot{background:rgba(26,107,74,.16)}
+  .market.below{border-color:rgba(196,96,58,.45);background:rgba(196,96,58,.08)}
+  .market.below .dot{background:rgba(196,96,58,.16)}
+
+  /* ---------- project pricing ---------- */
+  .proj{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+  .pcard{border-radius:16px;border:1px solid var(--line);padding:18px;background:#fff;transition:transform .16s,box-shadow .16s}
+  .pcard:hover{transform:translateY(-3px);box-shadow:0 14px 26px rgba(13,27,42,.10)}
+  .pcard .pname{font-weight:800;color:var(--navy);font-size:1rem}
+  .pcard .phrs{font-size:.8rem;color:var(--muted);margin:2px 0 12px}
+  .pcard .pprice{font-family:var(--display);font-weight:700;font-size:1.7rem;color:var(--terracotta-deep);letter-spacing:-.02em}
+
+  /* ---------- scorer ---------- */
+  .questions{margin-top:28px;display:grid;gap:8px}
+  .qrow{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:var(--champagne-soft);transition:.18s}
+  .qrow:hover{background:#fff}
+  .qrow .qtext{font-weight:700;color:var(--navy);font-size:1.02rem}
+  .qrow .qscale{font-size:.78rem;color:var(--muted);margin-top:2px}
+  .qrow .qscale b{color:var(--terracotta-deep);font-weight:700}
+  .seg{display:flex;gap:6px}
+  .seg button{
+    appearance:none;width:42px;height:42px;border-radius:11px;border:1.5px solid var(--line);background:#fff;
+    font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--muted);cursor:pointer;transition:.14s;
+  }
+  .seg button:hover{border-color:var(--emerald);color:var(--emerald);transform:translateY(-2px)}
+  .seg button[aria-pressed="true"]{background:var(--emerald);border-color:var(--emerald);color:#fff;box-shadow:0 6px 14px rgba(26,107,74,.28)}
+  @media(max-width:620px){.qrow{grid-template-columns:1fr}.seg button{flex:1}}
+
+  .verdict{margin-top:30px;border-radius:22px;padding:30px;text-align:center;color:#fff;position:relative;overflow:hidden;transition:.3s;background:var(--navy)}
+  .verdict::before{content:"";position:absolute;inset:0;opacity:.18;background:radial-gradient(500px 200px at 50% -20%,#fff,transparent 70%)}
+  .verdict .vscore{font-family:var(--display);font-weight:900;font-size:clamp(3rem,9vw,5rem);line-height:1;letter-spacing:-.03em}
+  .verdict .vscore span{font-size:1.6rem;opacity:.6;font-weight:600}
+  .verdict .vbadge{display:inline-block;margin-top:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:1.05rem;padding:9px 22px;border-radius:999px}
+  .verdict .vmsg{max-width:46ch;margin:16px auto 0;font-size:1rem;opacity:.92}
+  .verdict .vweak{margin-top:14px;font-size:.88rem;opacity:.75}
+  .verdict .vweak b{opacity:1}
+  .verdict.good{background:linear-gradient(150deg,#1A6B4A,#0f4632)}
+  .verdict.good .vbadge{background:#fff;color:var(--green)}
+  .verdict.caution{background:linear-gradient(150deg,#C4603A,#8f4124)}
+  .verdict.caution .vbadge{background:#fff;color:var(--terracotta-deep)}
+  .verdict.bad{background:linear-gradient(150deg,#B23A48,#7d2730)}
+  .verdict.bad .vbadge{background:#fff;color:var(--red)}
+  .meter{height:12px;border-radius:999px;background:rgba(255,255,255,.18);margin:22px auto 0;max-width:420px;overflow:hidden}
+  .meter i{display:block;height:100%;border-radius:999px;background:#fff;width:0;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+
+  /* ---------- tax ---------- */
+  .taxgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px 40px;margin-top:28px;align-items:end}
+  .infield label{display:block;font-weight:700;color:var(--navy);font-size:.98rem;margin-bottom:3px}
+  .infield .hint{font-weight:500;font-size:.8rem;color:var(--muted);margin-bottom:10px}
+  .money-input{position:relative}
+  .money-input .cur{position:absolute;left:16px;top:50%;transform:translateY(-50%);font-family:var(--display);font-weight:700;color:var(--muted);font-size:1.2rem}
+  .money-input input{width:100%;padding:15px 16px 15px 36px;border-radius:14px;border:1.5px solid var(--line);background:#fff;font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--navy);outline:none;transition:.16s}
+  .money-input input:focus{border-color:var(--emerald);box-shadow:0 0 0 3px rgba(26,107,74,.14)}
+  select{width:100%;padding:15px 16px;border-radius:14px;border:1.5px solid var(--line);background:#fff;font-family:var(--body);font-weight:600;font-size:1.05rem;color:var(--navy);outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%231A6B4A' stroke-width='2.5'%3E%3Cpath d='M3 5l4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;transition:.16s}
+  select:focus{border-color:var(--emerald);box-shadow:0 0 0 3px rgba(26,107,74,.14)}
+  .fstatus{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+  .fstatus button{appearance:none;cursor:pointer;border:1.5px solid var(--line);background:#fff;font-family:var(--body);font-weight:700;font-size:.95rem;color:var(--muted);padding:12px 20px;border-radius:12px;transition:.16s}
+  .fstatus button:hover{border-color:var(--emerald);color:var(--emerald);transform:translateY(-2px)}
+  .fstatus button[aria-pressed="true"]{background:var(--emerald);border-color:var(--emerald);color:#fff;box-shadow:0 8px 18px rgba(26,107,74,.26)}
+
+  .taxbreak{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+  .tbcard{border-radius:18px;border:1px solid var(--line);background:var(--champagne-soft);padding:22px 20px}
+  .tbcard .tbl{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .tbcard .tbn{font-family:var(--display);font-weight:700;font-size:1.9rem;color:var(--navy);margin-top:8px;letter-spacing:-.02em}
+  .tbcard .tbd{font-size:.82rem;color:var(--muted);margin-top:5px}
+
+  .taxtotal{margin-top:14px;border-radius:20px;background:var(--navy);color:var(--champagne);padding:26px 28px;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+  .taxtotal .ttmain .ttl{font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:rgba(240,230,200,.65);font-weight:700}
+  .taxtotal .ttmain .ttn{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,6vw,3.2rem);color:#fff;line-height:1;margin-top:6px;letter-spacing:-.02em}
+  .taxtotal .tteff{text-align:right}
+  .taxtotal .tteff .e1{font-family:var(--display);font-weight:700;font-size:2rem;color:#f0b89a}
+  .taxtotal .tteff .e2{font-size:.82rem;color:rgba(240,230,200,.65);font-weight:600}
+
+  .quarters{margin-top:24px}
+  .qgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+  .qcard{border-radius:16px;border:1px solid var(--line);background:#fff;padding:18px;text-align:center;transition:transform .16s,box-shadow .16s}
+  .qcard:hover{transform:translateY(-3px);box-shadow:0 14px 26px rgba(13,27,42,.10)}
+  .qcard .qq{font-size:.74rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--emerald)}
+  .qcard .qamt{font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--terracotta-deep);margin:6px 0 4px}
+  .qcard .qdue{font-size:.82rem;color:var(--muted);font-weight:600}
+
+  /* ---------- explanation ---------- */
+  .how{display:grid;grid-template-columns:1.15fr 1fr;gap:34px}
+  .how .steps{counter-reset:s;display:grid;gap:18px}
+  .how .steps li{list-style:none;display:flex;gap:15px;align-items:flex-start}
+  .how .steps li::before{counter-increment:s;content:counter(s);flex:none;width:34px;height:34px;border-radius:10px;background:var(--emerald);color:#fff;font-family:var(--display);font-weight:700;display:grid;place-items:center;font-size:1.05rem}
+  .how .steps b{color:var(--navy)}
+  .how .steps p{color:var(--muted);font-size:.95rem}
+  .example{background:var(--navy);color:var(--champagne);border-radius:20px;padding:28px;align-self:start}
+  .example h3{font-family:var(--display);font-weight:600;font-size:1.3rem;color:#fff;margin-bottom:4px}
+  .example .who{font-size:.85rem;color:rgba(240,230,200,.65);margin-bottom:18px}
+  .example .erow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(240,230,200,.18);font-size:.92rem}
+  .example .erow span{color:rgba(240,230,200,.78)}
+  .example .erow b{color:#fff;font-weight:700}
+  .example .eout{margin-top:16px;background:rgba(240,230,200,.08);border:1px solid rgba(240,230,200,.16);border-radius:14px;padding:15px 17px}
+  .example .eout .er{display:flex;justify-content:space-between;align-items:baseline;margin-top:7px}
+  .example .eout .er:first-child{margin-top:0}
+  .example .eout .er span{font-size:.85rem;color:rgba(240,230,200,.7)}
+  .example .eout .er b{font-family:var(--display);font-size:1.35rem;color:var(--champagne);font-weight:700}
+  .example .eout .er b.acc{color:#f0b89a}
+
+  /* ---------- disclaimer ---------- */
+  .disclaimer{border:1.5px dashed var(--terracotta);border-radius:18px;background:rgba(196,96,58,.06);padding:24px 26px;display:flex;gap:16px;align-items:flex-start;margin-bottom:30px}
+  .disclaimer .ic{flex:none;width:42px;height:42px;border-radius:12px;background:rgba(196,96,58,.15);display:grid;place-items:center;font-size:20px}
+  .disclaimer h3{font-weight:800;color:var(--terracotta-deep);font-size:1.05rem;margin-bottom:5px}
+  .disclaimer p{color:var(--ink);font-size:.93rem;max-width:78ch}
+  .disclaimer p + p{margin-top:8px}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy);color:rgba(240,230,200,.7);padding:34px 28px;text-align:center}
+  footer .fbrand{font-family:var(--display);font-weight:600;color:#fff;font-size:1.25rem;margin-bottom:6px}
+  footer small{display:block;margin-top:12px;font-size:.78rem;color:rgba(240,230,200,.45);max-width:62ch;margin-inline:auto}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:880px){
+    .levels{grid-template-columns:1fr 1fr}
+    .results,.proj,.qgrid{grid-template-columns:1fr 1fr}
+    .taxbreak{grid-template-columns:1fr}
+    .how,.sliders,.taxgrid{grid-template-columns:1fr}
+  }
+  @media(max-width:520px){
+    .levels{grid-template-columns:1fr}
+    .results{grid-template-columns:1fr}
+    .proj,.qgrid{grid-template-columns:1fr 1fr}
+    .topbar .pill{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="key">K</div>
+      <span>Keys to AI<small>Solopreneur Toolkit</small></span>
+    </div>
+    <div class="pill">3 free tools · 1 file</div>
+  </header>
+
+  <!-- TABS -->
+  <nav class="tabbar">
+    <div class="inner" role="tablist">
+      <button class="tab" role="tab" aria-selected="true"  data-tab="charge"><span class="tnum">1</span>What Should I Charge?</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="project"><span class="tnum">2</span>Should I Take This Project?</button>
+      <button class="tab" role="tab" aria-selected="false" data-tab="tax"><span class="tnum">3</span>What Do I Owe in Taxes?</button>
+    </div>
+  </nav>
+
+  <!-- ===================== TAB 1: RATE CALCULATOR ===================== -->
+  <section class="tab-panel active" id="tab-charge">
+    <div class="hero">
+      <div class="eyebrow">Rate Calculator</div>
+      <h1>Stop guessing.<br>Know exactly <em>what to charge.</em></h1>
+      <p>Pick your experience level, plug in your income goal and a few real numbers, and get the hourly rate that actually covers your life and your business — plus how it stacks up against the market.</p>
+    </div>
+
+    <main class="shell">
+      <div class="panel feature">
+        <div class="step-tag"><b>1</b> Your experience level</div>
+        <h2>Where are you right now?</h2>
+        <p class="sub">This sets the market range we compare your rate against. Be honest — pick the level that matches your current skill and results, not where you hope to be.</p>
+
+        <div class="levels" id="levels">
+          <button class="level" data-key="starting" aria-pressed="false">
+            <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="lvl-name">Just Starting Out</div>
+            <div class="lvl-desc">0–2 years. Building skills and your first portfolio.</div>
+            <div class="lvl-range">$25–$50<span>typical / hr</span></div>
+          </button>
+          <button class="level" data-key="growing" aria-pressed="false">
+            <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="lvl-name">Growing</div>
+            <div class="lvl-desc">2–5 years. Steady clients and proven results.</div>
+            <div class="lvl-range">$50–$85<span>typical / hr</span></div>
+          </button>
+          <button class="level" data-key="established" aria-pressed="false">
+            <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="lvl-name">Established</div>
+            <div class="lvl-desc">5+ years. Strong reputation and referrals.</div>
+            <div class="lvl-range">$85–$150<span>typical / hr</span></div>
+          </button>
+          <button class="level" data-key="expert" aria-pressed="false">
+            <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div class="lvl-name">Expert</div>
+            <div class="lvl-desc">Specialist or authority. Premium, in-demand work.</div>
+            <div class="lvl-range">$150–$300<span>typical / hr</span></div>
+          </button>
+        </div>
+
+        <div class="step-tag" style="margin-top:42px"><b>2</b> Your numbers</div>
+        <h2>Tell it about your business</h2>
+        <p class="sub">Drag the sliders to match your real situation. Everything updates live as you go.</p>
+
+        <div class="sliders">
+          <div class="field">
+            <div class="flabel"><div><span class="name">Monthly take-home goal</span><span class="hint">What you want in your pocket, after the business is paid</span></div><div class="val" id="goalVal">$6,000</div></div>
+            <input type="range" id="goal" min="1000" max="25000" step="250" value="6000">
+            <div class="scale"><span>$1k</span><span>$25k</span></div>
+          </div>
+          <div class="field">
+            <div class="flabel"><div><span class="name">Monthly business expenses</span><span class="hint">Software, tools, subscriptions, contractors</span></div><div class="val" id="expVal">$800</div></div>
+            <input type="range" id="exp" min="0" max="10000" step="100" value="800">
+            <div class="scale"><span>$0</span><span>$10k</span></div>
+          </div>
+          <div class="field">
+            <div class="flabel"><div><span class="name">Total hours available / week</span><span class="hint">Everything you spend on the business</span></div><div class="val" id="totalVal">40 hrs</div></div>
+            <input type="range" id="total" min="5" max="60" step="1" value="40">
+            <div class="scale"><span>5</span><span>60</span></div>
+          </div>
+          <div class="field">
+            <div class="flabel"><div><span class="name">Hours clients actually pay for</span><span class="hint">The rest goes to admin, sales &amp; marketing</span></div><div class="val" id="billVal">24 hrs</div></div>
+            <input type="range" id="bill" min="1" max="60" step="1" value="24">
+            <div class="scale"><span>1</span><span id="billMax">40</span></div>
+          </div>
+          <div class="field">
+            <div class="flabel"><div><span class="name">Profit buffer for slow months</span><span class="hint">A cushion on top so a quiet month doesn't sink you</span></div><div class="val" id="bufVal">20%</div></div>
+            <input type="range" id="buf" min="0" max="50" step="5" value="20">
+            <div class="scale"><span>0%</span><span>50%</span></div>
+          </div>
+        </div>
+
+        <div class="results-head"><span class="txt">Your rate</span><span class="line"></span></div>
+        <div class="results">
+          <div class="rcard"><div class="rlabel">Minimum rate</div><div class="rnum" id="rMin">$—</div><div class="rsuf">covers the bills, no cushion</div></div>
+          <div class="rcard hero-rate"><div class="rlabel">Recommended rate</div><div class="rnum" id="rRec">$—</div><div class="rsuf">your target hourly rate</div></div>
+          <div class="rcard"><div class="rlabel">Monthly revenue needed</div><div class="rnum" id="rRev">$—</div><div class="rsuf">to hit goal + buffer</div></div>
+          <div class="rcard"><div class="rlabel">Paid hours / week</div><div class="rnum" id="rHrs">—</div><div class="rsuf">billable time you're pricing</div></div>
+        </div>
+
+        <div class="market within" id="market">
+          <div class="dot" id="mIcon">→</div>
+          <div><div class="mtitle" id="mTitle">Pick a level to see your market comparison</div>
+          <div class="mbody" id="mBody">Choose your experience level above and we'll tell you whether your recommended rate lands below, within, or above what the market typically pays at your level.</div></div>
+        </div>
+
+        <div class="results-head" style="margin-top:34px"><span class="txt">If you price by the project</span><span class="line"></span></div>
+        <p class="sub">Rough estimates at your recommended rate. Always add a little margin — projects usually take longer than you think.</p>
+        <div class="proj">
+          <div class="pcard"><div class="pname">Small</div><div class="phrs">~10 hours of work</div><div class="pprice" id="pSmall">$—</div></div>
+          <div class="pcard"><div class="pname">Medium</div><div class="phrs">~30 hours of work</div><div class="pprice" id="pMed">$—</div></div>
+          <div class="pcard"><div class="pname">Large</div><div class="phrs">~80 hours of work</div><div class="pprice" id="pLarge">$—</div></div>
+          <div class="pcard"><div class="pname">Monthly retainer</div><div class="phrs">~20 hours / month</div><div class="pprice" id="pRet">$—</div></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="step-tag"><b>?</b> How it works</div>
+        <h2>The simple math behind your rate</h2>
+        <p class="sub">No mystery here. This is the same back-of-the-napkin math a smart accountant would walk you through — we just do it instantly.</p>
+        <div class="how" style="margin-top:26px">
+          <ol class="steps">
+            <li><div><b>Add up what you need.</b><p>Your monthly take-home goal plus your business expenses is the money the business has to actually bring in.</p></div></li>
+            <li><div><b>Add a buffer.</b><p>We pad that number with your slow-month cushion, so one quiet month doesn't wreck your year.</p></div></li>
+            <li><div><b>Count only the hours you get paid for.</b><p>You don't bill 40 hours a week — admin, sales, and marketing eat into it. We price against the hours clients actually pay for.</p></div></li>
+            <li><div><b>Divide.</b><p>Revenue needed ÷ paid hours = your hourly rate. The recommended rate includes your buffer; the minimum rate doesn't.</p></div></li>
+          </ol>
+          <div class="example">
+            <h3>Worked example</h3>
+            <div class="who">Maya — a freelance designer, "Growing" level</div>
+            <div class="erow"><span>Take-home goal</span><b>$6,000</b></div>
+            <div class="erow"><span>Business expenses</span><b>$800</b></div>
+            <div class="erow"><span>Slow-month buffer</span><b>20%</b></div>
+            <div class="erow"><span>Paid hours / week</span><b>24 hrs</b></div>
+            <div class="eout">
+              <div class="er"><span>Revenue needed / month</span><b>$8,160</b></div>
+              <div class="er"><span>Minimum rate</span><b>$65 / hr</b></div>
+              <div class="er"><span>Recommended rate</span><b class="acc">$79 / hr</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <div class="ic">ℹ️</div>
+        <div>
+          <h3>For educational purposes only</h3>
+          <p>This calculator is a planning and learning tool. The rates, ranges, and project estimates it produces are illustrative starting points — not financial, tax, or business advice, and not a guarantee of what you can or should charge.</p>
+          <p>Your real numbers depend on your market, niche, costs, taxes, and goals. Before making pricing or financial decisions, <b>please consult a qualified accountant or financial professional</b> who can look at your full situation.</p>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- ===================== TAB 2: PROJECT SCORER ===================== -->
+  <section class="tab-panel" id="tab-project">
+    <div class="hero">
+      <div class="eyebrow">Project Scorer</div>
+      <h1>Should you take it?<br><em>Let the score decide.</em></h1>
+      <p>Stop saying yes to work you should be turning down. Rate this project on seven things that actually matter, and get a clear verdict — backed by a reason.</p>
+    </div>
+
+    <main class="shell">
+      <div class="panel feature">
+        <div class="step-tag"><b>1</b> Rate this project</div>
+        <h2>Score it 1 to 5 on each</h2>
+        <p class="sub">Be honest. 1 means "definitely not," 5 means "absolutely yes." The verdict updates the moment you change an answer.</p>
+
+        <div class="questions" id="questions"><!-- built by JS --></div>
+
+        <div class="verdict" id="verdict">
+          <div class="vscore" id="vScore">21<span>/35</span></div>
+          <div class="vbadge" id="vBadge">—</div>
+          <div class="meter"><i id="vMeter"></i></div>
+          <div class="vmsg" id="vMsg">Answer the questions above to see your verdict.</div>
+          <div class="vweak" id="vWeak"></div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="step-tag"><b>?</b> How it works</div>
+        <h2>How the score becomes a verdict</h2>
+        <p class="sub">Seven criteria, each worth up to 5 points, for a total out of 35. We turn that into a percentage and a plain-English call.</p>
+        <div class="how" style="margin-top:26px">
+          <ol class="steps">
+            <li><div><b>Strong yes — 74% and up.</b><p>The money, the fit, and your gut all line up. This is the kind of work worth saying yes to.</p></div></li>
+            <li><div><b>Proceed with caution — 50% to 73%.</b><p>There's something here, but a weak spot or two. Fix or negotiate them before you commit.</p></div></li>
+            <li><div><b>Pass on this one — under 50%.</b><p>Too many warning signs. Saying no frees you up for work that's a better fit.</p></div></li>
+            <li><div><b>Watch your weakest score.</b><p>Even on a "yes," your lowest-rated answer is the thing most likely to bite you. We call it out so you can plan for it.</p></div></li>
+          </ol>
+          <div class="example">
+            <h3>Worked example</h3>
+            <div class="who">A client offer for a logo + brand kit</div>
+            <div class="erow"><span>Budget meets your rate</span><b>5 / 5</b></div>
+            <div class="erow"><span>Scope clearly defined</span><b>4 / 5</b></div>
+            <div class="erow"><span>Client communicates well</span><b>4 / 5</b></div>
+            <div class="erow"><span>Timeline realistic</span><b>2 / 5</b></div>
+            <div class="erow"><span>Gut feeling</span><b>5 / 5</b></div>
+            <div class="eout">
+              <div class="er"><span>Total score</span><b>28 / 35</b></div>
+              <div class="er"><span>That's</span><b>80%</b></div>
+              <div class="er"><span>Verdict</span><b class="acc">Strong yes ✓</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <div class="ic">ℹ️</div>
+        <div>
+          <h3>A decision aid, not the decision</h3>
+          <p>This scorer is here to make your thinking visible — not to replace your judgment. You know your business, your bandwidth, and your gut better than any tool does.</p>
+          <p>For decisions with real financial or legal weight (big contracts, payment terms, scope agreements), <b>review the details with a qualified accountant or advisor</b> before you sign anything.</p>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- ===================== TAB 3: TAX CALCULATOR ===================== -->
+  <section class="tab-panel" id="tab-tax">
+    <div class="hero">
+      <div class="eyebrow">Tax Estimator</div>
+      <h1>No more April<br><em>surprises.</em></h1>
+      <p>Get a rough estimate of what you'll owe — federal, self-employment, and state for all 50 states — plus the four quarterly due dates so you can set the money aside before it's due.</p>
+    </div>
+
+    <main class="shell">
+      <div class="panel feature">
+        <div class="step-tag"><b>1</b> Your numbers</div>
+        <h2>Tell it about your income</h2>
+        <p class="sub">Enter your net business income — that's your revenue after business expenses, before taxes — then pick your filing status and state.</p>
+
+        <div class="infield" style="margin-top:24px">
+          <label>Filing status</label>
+          <div class="hint">Sets your standard deduction and federal tax brackets</div>
+          <div class="fstatus" id="fstatus">
+            <button type="button" data-fs="single" aria-pressed="true">Single</button>
+            <button type="button" data-fs="mfj" aria-pressed="false">Married filing jointly</button>
+            <button type="button" data-fs="hoh" aria-pressed="false">Head of household</button>
+          </div>
+        </div>
+
+        <div class="taxgrid">
+          <div class="infield">
+            <label for="netInc">Net business income (for the year)</label>
+            <div class="hint">Revenue minus business expenses, before any taxes</div>
+            <div class="money-input"><span class="cur">$</span><input type="text" id="netInc" inputmode="numeric" value="80,000"></div>
+          </div>
+          <div class="infield">
+            <label for="state">Filing state</label>
+            <div class="hint">Sets your estimated state income tax rate</div>
+            <select id="state"><!-- built by JS --></select>
+          </div>
+        </div>
+
+        <div class="results-head"><span class="txt">Your estimated tax</span><span class="line"></span></div>
+        <div class="taxbreak">
+          <div class="tbcard"><div class="tbl">Self-employment tax</div><div class="tbn" id="tSE">$—</div><div class="tbd">Social Security + Medicare (15.3%)</div></div>
+          <div class="tbcard"><div class="tbl">Federal income tax</div><div class="tbn" id="tFed">$—</div><div class="tbd">After the standard deduction</div></div>
+          <div class="tbcard"><div class="tbl">State income tax</div><div class="tbn" id="tState">$—</div><div class="tbd" id="tStateNote">Estimated flat rate</div></div>
+        </div>
+
+        <div class="taxtotal">
+          <div class="ttmain"><div class="ttl">Total estimated tax</div><div class="ttn" id="tTotal">$—</div></div>
+          <div class="tteff"><div class="e1" id="tEff">—%</div><div class="e2">effective rate on net income</div></div>
+        </div>
+
+        <div class="quarters">
+          <div class="results-head" style="margin-top:30px"><span class="txt">Quarterly payments</span><span class="line"></span></div>
+          <p class="sub">A simple way to plan: set aside roughly one quarter of your estimated tax by each due date. Dates shift to the next business day if they fall on a weekend or holiday.</p>
+          <div class="qgrid">
+            <div class="qcard"><div class="qq">Q1</div><div class="qamt" id="q1">$—</div><div class="qdue" id="d1">—</div></div>
+            <div class="qcard"><div class="qq">Q2</div><div class="qamt" id="q2">$—</div><div class="qdue" id="d2">—</div></div>
+            <div class="qcard"><div class="qq">Q3</div><div class="qamt" id="q3">$—</div><div class="qdue" id="d3">—</div></div>
+            <div class="qcard"><div class="qq">Q4</div><div class="qamt" id="q4">$—</div><div class="qdue" id="d4">—</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="step-tag"><b>?</b> How it works</div>
+        <h2>What goes into the estimate</h2>
+        <p class="sub">A simplified version of how a solo business owner's taxes are figured. Real returns have more moving parts — this gets you in the ballpark.</p>
+        <div class="how" style="margin-top:26px">
+          <ol class="steps">
+            <li><div><b>Self-employment tax first.</b><p>When you work for yourself you cover both halves of Social Security and Medicare — about 15.3% on most of your net income.</p></div></li>
+            <li><div><b>Then federal income tax.</b><p>We subtract the standard deduction and half your self-employment tax, then apply the federal brackets to what's left.</p></div></li>
+            <li><div><b>Add your state.</b><p>Each state is different. We apply a simplified estimated rate — and nine states have no income tax at all.</p></div></li>
+            <li><div><b>Split it into four.</b><p>The IRS expects estimated taxes quarterly. We divide your total across the four due dates so nothing piles up.</p></div></li>
+          </ol>
+          <div class="example">
+            <h3>Worked example</h3>
+            <div class="who">A consultant earning $80,000 net, filing single, in Texas</div>
+            <div class="erow"><span>Self-employment tax</span><b>≈ $11,304</b></div>
+            <div class="erow"><span>Federal income tax</span><b>≈ $7,971</b></div>
+            <div class="erow"><span>State income tax (TX)</span><b>$0</b></div>
+            <div class="eout">
+              <div class="er"><span>Total estimated tax</span><b>≈ $19,275</b></div>
+              <div class="er"><span>Effective rate</span><b>≈ 24%</b></div>
+              <div class="er"><span>Each quarter</span><b class="acc">≈ $4,819</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <div class="ic">⚠️</div>
+        <div>
+          <h3>For educational purposes only — not tax advice</h3>
+          <p>This estimator uses simplified federal brackets by filing status and a single representative state rate. It does not account for credits, additional deductions, dependents, other income, or local taxes — so your real numbers will differ.</p>
+          <p>Treat these figures as planning estimates only. <b>Before making any tax decisions or payments, consult a qualified accountant or tax professional</b> who can review your complete situation.</p>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <footer>
+    <div class="fbrand">Keys to AI</div>
+    <div>Practical AI workflows for solopreneurs &amp; small business owners.</div>
+    <small>Free Solopreneur Business Toolkit — rate calculator, project scorer &amp; tax estimator. Educational use only. Always verify pricing, business, and tax decisions with a qualified professional.</small>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  function money(n){ return "$" + Math.round(n).toLocaleString("en-US"); }
+
+  /* ---------------- TABS ---------------- */
+  var tabs = document.querySelectorAll(".tab");
+  tabs.forEach(function(t){
+    t.addEventListener("click", function(){
+      tabs.forEach(function(x){ x.setAttribute("aria-selected","false"); });
+      t.setAttribute("aria-selected","true");
+      document.querySelectorAll(".tab-panel").forEach(function(p){ p.classList.remove("active"); });
+      $("tab-" + t.getAttribute("data-tab")).classList.add("active");
+      window.scrollTo(0,0);
+    });
+  });
+
+  /* ============ TAB 1 — RATE CALCULATOR ============ */
+  var ranges = {
+    starting:{label:"Just Starting Out",min:25,max:50},
+    growing:{label:"Growing",min:50,max:85},
+    established:{label:"Established",min:85,max:150},
+    expert:{label:"Expert",min:150,max:300}
+  };
+  var selected=null;
+  var goal=$("goal"),exp=$("exp"),total=$("total"),bill=$("bill"),buf=$("buf");
+  function setFill(el){ el.style.setProperty("--fill",((el.value-el.min)/(el.max-el.min)*100)+"%"); }
+
+  function calcRate(){
+    if(+bill.value>+total.value){ bill.value=total.value; }
+    bill.max=total.value; $("billMax").textContent=total.value;
+    var g=+goal.value,e=+exp.value,totalH=+total.value,billH=+bill.value,buffer=+buf.value;
+    $("goalVal").textContent=money(g);$("expVal").textContent=money(e);
+    $("totalVal").textContent=totalH+" hrs";$("billVal").textContent=billH+" hrs";$("bufVal").textContent=buffer+"%";
+    [goal,exp,total,bill,buf].forEach(setFill);
+    var paid=billH*4.33, base=g+e, rev=base*(1+buffer/100);
+    var minR=base/paid, recR=rev/paid;
+    $("rMin").textContent=money(minR);$("rRec").textContent=money(recR);
+    $("rRev").textContent=money(rev);$("rHrs").textContent=billH;
+    $("pSmall").textContent=money(recR*10);$("pMed").textContent=money(recR*30);
+    $("pLarge").textContent=money(recR*80);$("pRet").textContent=money(recR*20);
+    marketMsg(recR);
+  }
+  function marketMsg(recR){
+    var m=$("market"),title=$("mTitle"),body=$("mBody"),icon=$("mIcon");
+    m.className="market";
+    if(!selected){ m.classList.add("within");icon.textContent="→";
+      title.textContent="Pick a level to see your market comparison";
+      body.innerHTML="Choose your experience level above and we'll tell you whether your recommended rate lands below, within, or above what the market typically pays at your level.";return; }
+    var r=ranges[selected], rt="$"+r.min+"–$"+r.max+"/hr", rr=Math.round(recR);
+    if(rr<r.min){ m.classList.add("below");icon.textContent="↑";
+      title.textContent="Below market — you may be leaving money on the table";
+      body.innerHTML="At the <b>"+r.label+"</b> level, rates typically run <b>"+rt+"</b>. Your recommended rate of <b>"+money(recR)+"/hr</b> sits under that. You likely have room to raise it — or keep more margin by working fewer hours.";
+    } else if(rr>r.max){ m.classList.add("above");icon.textContent="★";
+      title.textContent="Above market — premium territory";
+      body.innerHTML="Your recommended rate of <b>"+money(recR)+"/hr</b> is above the typical <b>"+rt+"</b> for the <b>"+r.label+"</b> level. That's achievable with strong positioning and proof — just make sure your offer and results clearly justify the premium.";
+    } else { m.classList.add("within");icon.textContent="✓";
+      title.textContent="Right in the market range";
+      body.innerHTML="Your recommended rate of <b>"+money(recR)+"/hr</b> lands neatly inside the typical <b>"+rt+"</b> for the <b>"+r.label+"</b> level. That's a healthy, defensible place to price.";
+    }
+  }
+  var levelEls=document.querySelectorAll(".level");
+  levelEls.forEach(function(b){ b.addEventListener("click",function(){
+    levelEls.forEach(function(x){x.setAttribute("aria-pressed","false");});
+    b.setAttribute("aria-pressed","true");selected=b.getAttribute("data-key");calcRate();
+  });});
+  [goal,exp,total,bill,buf].forEach(function(el){ el.addEventListener("input",calcRate); });
+  document.querySelector('.level[data-key="growing"]').click();
+
+  /* ============ TAB 2 — PROJECT SCORER ============ */
+  var QS=[
+    {q:"Budget meets your rate", lo:"Way below", hi:"Meets or beats it"},
+    {q:"Scope is clearly defined", lo:"Very vague", hi:"Crystal clear"},
+    {q:"Client communicates well", lo:"Red flags", hi:"Great so far"},
+    {q:"Fits your zone of genius", lo:"Not really", hi:"Perfect fit"},
+    {q:"Timeline is realistic", lo:"Rushed", hi:"Comfortable"},
+    {q:"Growth or referral potential", lo:"Dead end", hi:"Big upside"},
+    {q:"Gut feeling", lo:"Uneasy", hi:"Excited"}
+  ];
+  var scores=QS.map(function(){ return 3; });
+  var qWrap=$("questions");
+  QS.forEach(function(item,i){
+    var row=document.createElement("div"); row.className="qrow";
+    var left=document.createElement("div");
+    left.innerHTML='<div class="qtext">'+item.q+'</div><div class="qscale"><b>1</b> '+item.lo+' &nbsp;·&nbsp; <b>5</b> '+item.hi+'</div>';
+    var seg=document.createElement("div"); seg.className="seg";
+    for(var v=1;v<=5;v++){
+      (function(val){
+        var b=document.createElement("button");
+        b.textContent=val; b.setAttribute("aria-pressed", val===3?"true":"false");
+        b.addEventListener("click",function(){
+          scores[i]=val;
+          seg.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-pressed","false");});
+          b.setAttribute("aria-pressed","true"); scoreProject();
+        });
+        seg.appendChild(b);
+      })(v);
+    }
+    row.appendChild(left); row.appendChild(seg); qWrap.appendChild(row);
+  });
+  function scoreProject(){
+    var total=scores.reduce(function(a,b){return a+b;},0);
+    var pct=Math.round(total/35*100);
+    var v=$("verdict"),badge=$("vBadge"),msg=$("vMsg"),weak=$("vWeak");
+    $("vScore").innerHTML=total+'<span>/35</span>';
+    $("vMeter").style.width=pct+"%";
+    v.className="verdict";
+    if(pct>=74){ v.classList.add("good"); badge.textContent="Strong yes ✓";
+      msg.textContent="This one checks out. The money, the fit, and your gut are pointing the same way — go for it.";
+    } else if(pct>=50){ v.classList.add("caution"); badge.textContent="Proceed with caution";
+      msg.textContent="There's real potential here, but something's shaky. Negotiate or shore up the weak spots before you commit.";
+    } else { v.classList.add("bad"); badge.textContent="Pass on this one";
+      msg.textContent="The signs aren't there. Saying no to this frees you up for work that's a much better fit.";
+    }
+    // weakest criterion
+    var minV=Math.min.apply(null,scores), idx=scores.indexOf(minV);
+    if(minV<=2){ weak.innerHTML="Weakest area: <b>"+QS[idx].q+"</b> ("+minV+"/5). That's the part most likely to cause trouble — address it first."; }
+    else { weak.innerHTML="No major red flags — your lowest score is "+minV+"/5."; }
+  }
+  scoreProject();
+
+  /* ============ TAB 3 — TAX ESTIMATOR ============ */
+  // simplified representative state income-tax rates (%). 0 = no state income tax.
+  var STATES=[
+    ["AL",4.0,"Alabama"],["AK",0,"Alaska"],["AZ",2.5,"Arizona"],["AR",3.9,"Arkansas"],
+    ["CA",6.0,"California"],["CO",4.4,"Colorado"],["CT",5.0,"Connecticut"],["DE",5.0,"Delaware"],
+    ["FL",0,"Florida"],["GA",5.39,"Georgia"],["HI",7.0,"Hawaii"],["ID",5.7,"Idaho"],
+    ["IL",4.95,"Illinois"],["IN",3.0,"Indiana"],["IA",3.8,"Iowa"],["KS",5.0,"Kansas"],
+    ["KY",4.0,"Kentucky"],["LA",3.0,"Louisiana"],["ME",6.0,"Maine"],["MD",5.0,"Maryland"],
+    ["MA",5.0,"Massachusetts"],["MI",4.25,"Michigan"],["MN",6.8,"Minnesota"],["MS",4.7,"Mississippi"],
+    ["MO",4.7,"Missouri"],["MT",5.9,"Montana"],["NE",5.2,"Nebraska"],["NV",0,"Nevada"],
+    ["NH",0,"New Hampshire"],["NJ",5.5,"New Jersey"],["NM",4.9,"New Mexico"],["NY",6.0,"New York"],
+    ["NC",4.25,"North Carolina"],["ND",2.0,"North Dakota"],["OH",3.5,"Ohio"],["OK",4.75,"Oklahoma"],
+    ["OR",8.0,"Oregon"],["PA",3.07,"Pennsylvania"],["RI",5.0,"Rhode Island"],["SC",6.0,"South Carolina"],
+    ["SD",0,"South Dakota"],["TN",0,"Tennessee"],["TX",0,"Texas"],["UT",4.55,"Utah"],
+    ["VT",6.6,"Vermont"],["VA",5.75,"Virginia"],["WA",0,"Washington"],["WV",5.0,"West Virginia"],
+    ["WI",5.3,"Wisconsin"],["WY",0,"Wyoming"]
+  ];
+  var stateSel=$("state");
+  STATES.forEach(function(s,i){
+    var o=document.createElement("option");
+    o.value=i; o.textContent=s[2]+(s[1]===0?"  (no income tax)":"");
+    if(s[0]==="TX") o.selected=true;
+    stateSel.appendChild(o);
+  });
+
+  var SS_BASE=176100;
+  // 2025 standard deduction + federal brackets by filing status
+  var FILING={
+    single:{ded:15000, br:[[0,.10],[11925,.12],[48475,.22],[103350,.24],[197300,.32],[250525,.35],[626350,.37]]},
+    mfj:{ded:30000, br:[[0,.10],[23850,.12],[96950,.22],[206700,.24],[394600,.32],[501050,.35],[751600,.37]]},
+    hoh:{ded:22500, br:[[0,.10],[17000,.12],[64850,.22],[103350,.24],[197300,.32],[250500,.35],[626350,.37]]}
+  };
+  var filing="single";
+  function fedTax(t, br){
+    var tax=0;
+    for(var i=0;i<br.length;i++){
+      var lo=br[i][0], hi=(i<br.length-1)?br[i+1][0]:Infinity, rate=br[i][1];
+      if(t>lo){ tax += (Math.min(t,hi)-lo)*rate; } else break;
+    }
+    return tax;
+  }
+  var netEl=$("netInc");
+  netEl.addEventListener("input",function(){
+    var caret=netEl.value.replace(/[^0-9]/g,"");
+    netEl.value = caret ? (+caret).toLocaleString("en-US") : "";
+    calcTax();
+  });
+  function calcTax(){
+    var net=+(netEl.value.replace(/[^0-9]/g,"")||0);
+    var st=STATES[+stateSel.value];
+    var seBase=net*0.9235;
+    var seTax=Math.min(seBase,SS_BASE)*0.124 + seBase*0.029;
+    var f=FILING[filing];
+    var taxable=Math.max(0, net - seTax/2 - f.ded);
+    var fed=fedTax(taxable, f.br);
+    var stateTax=taxable*(st[1]/100);
+    var totalTax=seTax+fed+stateTax;
+    var eff= net>0 ? (totalTax/net*100) : 0;
+    $("tSE").textContent=money(seTax);
+    $("tFed").textContent=money(fed);
+    $("tState").textContent=money(stateTax);
+    $("tStateNote").textContent = st[1]===0 ? (st[2]+" — no state income tax") : (st[2]+" ≈ "+st[1]+"% (estimated)");
+    $("tTotal").textContent=money(totalTax);
+    $("tEff").textContent=Math.round(eff)+"%";
+    var q=totalTax/4;
+    ["q1","q2","q3","q4"].forEach(function(id){ $(id).textContent=money(q); });
+  }
+  // quarterly due dates for the current tax year
+  (function(){
+    var y=new Date().getFullYear();
+    $("d1").textContent="Apr 15, "+y;
+    $("d2").textContent="Jun 15, "+y;
+    $("d3").textContent="Sep 15, "+y;
+    $("d4").textContent="Jan 15, "+(y+1);
+  })();
+  stateSel.addEventListener("change",calcTax);
+  var fbtns=document.querySelectorAll('#fstatus button');
+  fbtns.forEach(function(b){ b.addEventListener('click',function(){
+    fbtns.forEach(function(x){x.setAttribute('aria-pressed','false');});
+    b.setAttribute('aria-pressed','true'); filing=b.getAttribute('data-fs'); calcTax();
+  });});
+  calcTax();
+
+})();
+</script>
+</body>
+</html>

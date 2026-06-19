@@ -3,7 +3,7 @@
 // in the browser bundle. This file just validates and forwards the email.
 export type SubscribeResult = { ok: boolean; message: string };
 
-export async function subscribe(email: string): Promise<SubscribeResult> {
+export async function subscribe(email: string, group?: string): Promise<SubscribeResult> {
   if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return { ok: false, message: "Please enter a valid email." };
   }
@@ -11,7 +11,7 @@ export async function subscribe(email: string): Promise<SubscribeResult> {
     const res = await fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
+      body: JSON.stringify(group ? { email, group } : { email }),
     });
     const data = (await res.json().catch(() => null)) as SubscribeResult | null;
     if (data && typeof data.ok === "boolean") return data;

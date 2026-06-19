@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Pack for Solopreneurs — Keys to AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --emerald:#1A6B4A;--terracotta:#C4603A;--terracotta-deep:#A84E2C;
+    --champagne:#F0E6C8;--champagne-soft:#F7F1DF;--navy:#0D1B2A;--ink:#1c2230;--muted:#5c6472;
+    --line:rgba(13,27,42,.12);--card:#fffdf7;
+    --display:"Fraunces",Georgia,serif;--body:"Hanken Grotesk",-apple-system,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--champagne);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;padding:2rem 1rem 4rem}
+  .page{max-width:860px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 20px 60px rgba(13,27,42,.12)}
+  .header{background:var(--navy);color:var(--champagne);padding:34px 40px}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .brand .key{width:28px;height:28px;border-radius:7px;background:linear-gradient(145deg,var(--emerald),var(--terracotta));display:grid;place-items:center;font-family:var(--display);font-weight:900;color:#fff;font-size:15px}
+  .brand b{font-weight:800;letter-spacing:.2px}
+  .header .eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px}
+  .header h1{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.05;letter-spacing:-.02em}
+  .header p{color:rgba(240,230,200,.78);margin-top:10px;max-width:56ch;font-size:.98rem}
+  .body{padding:30px 40px}
+  .how{background:var(--champagne-soft);border:1px solid var(--line);border-radius:14px;padding:14px 18px;font-size:.9rem;color:var(--muted);margin-bottom:28px}
+  .how b{color:var(--ink)}
+  .cat-title{font-family:var(--display);font-weight:600;font-size:1.3rem;color:var(--navy);margin:26px 0 6px}
+  .prompt{border:1px solid var(--line);border-radius:14px;background:#fff;margin-top:14px;overflow:hidden}
+  .prompt .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;background:var(--champagne-soft);border-bottom:1px solid var(--line)}
+  .prompt .name{font-weight:700;color:var(--navy);font-size:.97rem}
+  .copy{font-family:var(--body);font-weight:700;font-size:.8rem;border:1.5px solid var(--emerald);color:var(--emerald);background:transparent;border-radius:9px;padding:6px 13px;cursor:pointer;transition:.15s;white-space:nowrap}
+  .copy:hover{background:var(--emerald);color:#fff}
+  .copy.done{background:var(--emerald);color:#fff;border-color:var(--emerald)}
+  .prompt .text{padding:16px;font-family:var(--mono);font-size:.86rem;line-height:1.6;color:var(--ink);white-space:pre-wrap}
+  .prompt .text mark{background:rgba(196,96,58,.16);color:var(--terracotta-deep);border-radius:4px;padding:0 3px;font-style:normal}
+  footer{padding:22px 40px 30px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+  footer b{color:var(--ink)}
+  @media(max-width:560px){.header,.body,footer{padding-left:22px;padding-right:22px}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="brand"><span class="key">K</span><b>Keys to AI</b></div>
+    <div class="eyebrow">Free Resource</div>
+    <h1>Prompt Pack for Solopreneurs</h1>
+    <p>Reusable prompts for planning, writing, and reviewing — copy, paste, and swap in your details.</p>
+  </div>
+
+  <div class="body">
+    <div class="how"><b>How to use:</b> Hit <b>Copy</b>, paste into Claude (or your AI of choice), and replace the <mark>highlighted</mark> parts with your own details. The more specific you are, the better the output.</div>
+    <div id="packs"></div>
+  </div>
+
+  <footer>
+    <b>Keys to AI</b> — Practical AI workflows for solopreneurs. These prompts are starting points; always review AI output before you use it.
+  </footer>
+</div>
+
+<script>
+  var PACKS=[
+    {cat:"Planning", prompts:[
+      {name:"Content idea generator", text:"You are a content strategist for a [NICHE] solopreneur. My audience is [WHO THEY ARE] and they struggle with [PROBLEM]. Give me 10 video or post ideas that are specific, useful, and not generic. For each, give a hook line and the one takeaway."},
+      {name:"Weekly priorities", text:"Here is everything on my plate this week: [DUMP YOUR TASKS]. Act as a no-nonsense operations partner. Group these into Do Now, Schedule, Delegate/Automate, and Drop. Then tell me the single most important thing to do first and why."}
+    ]},
+    {cat:"Writing", prompts:[
+      {name:"First draft from notes", text:"Turn these rough notes into a clear, friendly [EMAIL / POST / SCRIPT] in my voice: warm, plain-spoken, no jargon, no hype. Notes: [PASTE NOTES]. Keep it under [WORD COUNT] words and end with one clear call to action."},
+      {name:"Rewrite to be clearer", text:"Rewrite the text below so a busy beginner understands it instantly. Shorter sentences, plain words, no fluff. Keep my meaning and tone. Text: [PASTE TEXT]."}
+    ]},
+    {cat:"Review & polish", prompts:[
+      {name:"Critical second opinion", text:"Be a tough but fair editor. Read the draft below and tell me: what's unclear, what's weak, and what to cut. Give specific fixes, not vague praise. Draft: [PASTE DRAFT]."},
+      {name:"Spot the gaps", text:"I'm about to publish this [THING]. Play devil's advocate: what questions will my audience still have, what objections am I not answering, and what's missing? Content: [PASTE CONTENT]."}
+    ]}
+  ];
+
+  var wrap=document.getElementById("packs");
+  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+  function hl(s){return esc(s).replace(/\[([^\]]+)\]/g,'<mark>[$1]</mark>');}
+  PACKS.forEach(function(p){
+    var t=document.createElement("div"); t.className="cat-title"; t.textContent=p.cat; wrap.appendChild(t);
+    p.prompts.forEach(function(pr){
+      var box=document.createElement("div"); box.className="prompt";
+      box.innerHTML='<div class="top"><span class="name">'+pr.name+'</span><button class="copy">Copy</button></div><div class="text">'+hl(pr.text)+'</div>';
+      var btn=box.querySelector(".copy");
+      btn.addEventListener("click",function(){
+        navigator.clipboard.writeText(pr.text).then(function(){
+          btn.textContent="Copied ✓"; btn.classList.add("done");
+          setTimeout(function(){btn.textContent="Copy";btn.classList.remove("done");},1600);
+        });
+      });
+      wrap.appendChild(box);
+    });
+  });
+</script>
+</body>
+</html>

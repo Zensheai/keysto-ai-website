@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automation Audit Checklist — Keys to AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --emerald:#1A6B4A;--terracotta:#C4603A;--terracotta-deep:#A84E2C;
+    --champagne:#F0E6C8;--champagne-soft:#F7F1DF;--navy:#0D1B2A;--ink:#1c2230;--muted:#5c6472;
+    --line:rgba(13,27,42,.12);--card:#fffdf7;
+    --display:"Fraunces",Georgia,serif;--body:"Hanken Grotesk",-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--champagne);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;padding:2rem 1rem 4rem}
+  .page{max-width:840px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 20px 60px rgba(13,27,42,.12)}
+  .header{background:var(--navy);color:var(--champagne);padding:34px 40px}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+  .brand .key{width:28px;height:28px;border-radius:7px;background:linear-gradient(145deg,var(--emerald),var(--terracotta));display:grid;place-items:center;font-family:var(--display);font-weight:900;color:#fff;font-size:15px}
+  .brand b{font-weight:800;letter-spacing:.2px}
+  .header .eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--terracotta);margin-bottom:8px}
+  .header h1{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.05;letter-spacing:-.02em}
+  .header p{color:rgba(240,230,200,.78);margin-top:10px;max-width:54ch;font-size:.98rem}
+  .body{padding:34px 40px}
+  .lead{color:var(--muted);margin-bottom:8px}
+  .how{background:var(--champagne-soft);border:1px solid var(--line);border-radius:14px;padding:14px 18px;font-size:.9rem;color:var(--muted);margin:18px 0 28px}
+  .how b{color:var(--ink)}
+  .cat{margin-bottom:26px}
+  .cat h2{font-family:var(--display);font-weight:600;font-size:1.25rem;color:var(--navy);margin-bottom:4px;display:flex;align-items:center;gap:9px}
+  .cat .cnt{font-size:.78rem;font-weight:700;color:var(--emerald);background:rgba(26,107,74,.1);border-radius:999px;padding:2px 10px}
+  .task{display:flex;gap:13px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:12px;margin-top:9px;cursor:pointer;transition:.15s;background:#fff}
+  .task:hover{border-color:var(--emerald);background:var(--champagne-soft)}
+  .task input{appearance:none;flex:none;width:22px;height:22px;border:2px solid var(--line);border-radius:6px;cursor:pointer;margin-top:1px;position:relative;transition:.15s}
+  .task input:checked{background:var(--emerald);border-color:var(--emerald)}
+  .task input:checked::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:13px;font-weight:800}
+  .task .t b{display:block;color:var(--navy);font-weight:700;font-size:.97rem}
+  .task .t span{font-size:.83rem;color:var(--muted)}
+  .task.checked{border-color:var(--emerald);background:rgba(26,107,74,.06)}
+  .summary{position:sticky;bottom:16px;margin-top:30px;background:var(--navy);color:var(--champagne);border-radius:16px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 16px 36px rgba(13,27,42,.25)}
+  .summary .big{font-family:var(--display);font-weight:700;font-size:2rem;color:#fff;line-height:1}
+  .summary .lbl{font-size:.85rem;color:rgba(240,230,200,.7)}
+  .summary .msg{font-size:.9rem;color:var(--champagne);max-width:34ch;text-align:right}
+  .actions{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{font-family:var(--body);font-weight:700;font-size:.95rem;border:none;cursor:pointer;padding:12px 20px;border-radius:12px}
+  .btn-print{background:var(--terracotta);color:#fff}
+  .btn-reset{background:transparent;border:1.5px solid var(--line);color:var(--muted)}
+  footer{padding:22px 40px 30px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+  footer b{color:var(--ink)}
+  @media print{body{background:#fff;padding:0}.page{box-shadow:none;border:none}.summary{position:static}.actions{display:none}}
+  @media(max-width:560px){.header,.body,footer{padding-left:22px;padding-right:22px}.summary{flex-direction:column;align-items:flex-start}.summary .msg{text-align:left}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="header">
+    <div class="brand"><span class="key">K</span><b>Keys to AI</b></div>
+    <div class="eyebrow">Free Resource</div>
+    <h1>Automation Audit Checklist</h1>
+    <p>Find the repetitive tasks quietly eating your week — and spot the ones worth automating first.</p>
+  </div>
+
+  <div class="body">
+    <p class="lead">Go through the list and check every task you currently do <b>manually and repeatedly</b>. Each one you check is a candidate to hand off to an automation or AI workflow.</p>
+    <div class="how"><b>How to use this:</b> Check the tasks that drain your time. Then start with the category that has the most checks — that's where automating first will give you back the most hours.</div>
+
+    <div id="cats"></div>
+
+    <div class="summary">
+      <div><div class="big" id="count">0</div><div class="lbl">tasks worth automating</div></div>
+      <div class="msg" id="msg">Check the tasks you do by hand to see where to start.</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-print" onclick="window.print()">Save / Print as PDF</button>
+      <button class="btn btn-reset" id="reset">Clear all</button>
+    </div>
+  </div>
+
+  <footer>
+    <b>Keys to AI</b> — Practical AI workflows for solopreneurs. This checklist is an educational planning tool; pick one task and automate it this week before moving to the next.
+  </footer>
+</div>
+
+<script>
+  var DATA=[
+    {cat:"Admin & Operations", items:[
+      ["Scheduling and rescheduling meetings","A booking link removes the back-and-forth"],
+      ["Copying data between apps","Make.com or Zapier can sync it automatically"],
+      ["Backing up files and exports","Set it once, let it run on a schedule"],
+      ["Updating spreadsheets by hand","Connect the source so it fills itself"]
+    ]},
+    {cat:"Content & Marketing", items:[
+      ["Repurposing long videos into shorts","Tools like Opus Clip do the first pass"],
+      ["Writing social captions from scratch","A prompt template gets you 80% there"],
+      ["Posting the same content to each platform","Schedule once, publish everywhere"],
+      ["Pulling ideas from comments and trends","Automate the collection, you do the picking"]
+    ]},
+    {cat:"Client & Sales", items:[
+      ["Sending the same onboarding emails","A sequence sends them for you"],
+      ["Answering repeat questions","A saved FAQ or AI reply handles the basics"],
+      ["Creating proposals or quotes","Templated docs fill in the details"],
+      ["Following up with leads","Automated reminders so none slip away"]
+    ]},
+    {cat:"Finance & Reporting", items:[
+      ["Chasing unpaid invoices","Automatic reminders do the nudging"],
+      ["Categorizing expenses","Rules sort them as they land"],
+      ["Building the same weekly report","Auto-generate it from your data"]
+    ]},
+    {cat:"Communication", items:[
+      ["Typing the same replies","Saved snippets and templates"],
+      ["Triaging your inbox","Filters and labels sort it for you"],
+      ["Sending status updates","A scheduled summary keeps people in the loop"]
+    ]}
+  ];
+
+  var wrap=document.getElementById("cats");
+  DATA.forEach(function(c,ci){
+    var sec=document.createElement("div"); sec.className="cat";
+    var h=document.createElement("h2"); h.innerHTML=c.cat+' <span class="cnt" id="cnt'+ci+'">0</span>';
+    sec.appendChild(h);
+    c.items.forEach(function(it){
+      var lab=document.createElement("label"); lab.className="task";
+      lab.innerHTML='<input type="checkbox"><span class="t"><b>'+it[0]+'</b><span>'+it[1]+'</span></span>';
+      lab.querySelector("input").addEventListener("change",function(){ lab.classList.toggle("checked",this.checked); tally(); });
+      sec.appendChild(lab);
+    });
+    wrap.appendChild(sec);
+  });
+
+  function tally(){
+    var total=0;
+    var secs=document.querySelectorAll(".cat");
+    secs.forEach(function(sec,ci){
+      var n=sec.querySelectorAll("input:checked").length;
+      document.getElementById("cnt"+ci).textContent=n;
+      total+=n;
+    });
+    document.getElementById("count").textContent=total;
+    var msg=document.getElementById("msg");
+    if(total===0) msg.textContent="Check the tasks you do by hand to see where to start.";
+    else if(total<=3) msg.textContent="A solid start. Automate these few and you'll feel it.";
+    else if(total<=7) msg.textContent="That's real time back. Tackle them one per week.";
+    else msg.textContent="You're doing a lot by hand — start with your busiest category first.";
+  }
+  document.getElementById("reset").addEventListener("click",function(){
+    document.querySelectorAll(".task input").forEach(function(i){i.checked=false;i.closest(".task").classList.remove("checked");});
+    tally();
+  });
+</script>
+</body>
+</html>

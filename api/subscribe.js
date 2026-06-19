@@ -22,7 +22,9 @@ export default async function handler(req, res) {
     return;
   }
 
-  const groupId = process.env.MAILERLITE_GROUP_ID;
+  // Optional per-resource group id from the request, else fall back to the env default.
+  const requestedGroup = req.body && typeof req.body.group === "string" && req.body.group.trim();
+  const groupId = requestedGroup || process.env.MAILERLITE_GROUP_ID;
   const payload = groupId ? { email, groups: [groupId] } : { email };
 
   try {
