@@ -23,9 +23,13 @@ function ResourceCard({ item }: { item: ResourceItem }) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setLoading(true);
     setError(null);
-    const result = await subscribe(email, item.group || undefined, name.trim() || undefined);
+    if (!name.trim()) {
+      setError("Please enter your first name.");
+      return;
+    }
+    setLoading(true);
+    const result = await subscribe(email, item.group || undefined, name.trim());
     setLoading(false);
     if (result.ok) {
       setStage("done");
@@ -64,9 +68,10 @@ function ResourceCard({ item }: { item: ResourceItem }) {
           >
             <input
               type="text"
+              required
               value={name}
-              placeholder="First name (optional)"
-              aria-label="First name (optional)"
+              placeholder="First name"
+              aria-label={`First name to personalize ${item.title}`}
               autoComplete="given-name"
               onChange={(e) => setName(e.target.value)}
               className="font-body text-sm"
