@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { site } from "../content";
+import Seo from "../components/Seo";
 import { initReveals } from "../lib/animations";
 
 const { blog } = site;
@@ -17,6 +18,11 @@ export default function Blog() {
   useEffect(() => initReveals(), []);
   return (
     <div>
+      <Seo
+        title="AI Workflow Guides & Tutorials | Keys to AI"
+        description="Written AI tutorials for solopreneurs. Read the guide, watch the video, and download the resources — every workflow worth your time."
+        path="/blog"
+      />
       {/* Hero header — dark bg */}
       <div className="bg-bg-dark py-20 md:py-28">
         <div className="max-w-[1200px] mx-auto px-6">

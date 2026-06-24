@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { site } from "../content";
+import Seo from "../components/Seo";
 import { initReveals } from "../lib/animations";
 
 // Individual blog-article page. Reads :slug, finds the matching post in
@@ -33,6 +34,13 @@ export default function BlogPost() {
 
   return (
     <main className="pt-16">
+      <Seo
+        title={`${post.title} | Keys to AI`}
+        description={post.summary}
+        path={post.href}
+        image={post.image}
+        type="article"
+      />
       {/* Dark header */}
       <header className="bg-bg-dark">
         <div style={{ ...wrap, paddingTop: "4rem", paddingBottom: "3.5rem" }}>

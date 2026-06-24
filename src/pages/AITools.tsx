@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { site } from "../content";
+import Seo from "../components/Seo";
 import { initReveals } from "../lib/animations";
 
 const { aiToolsPage } = site;
@@ -22,6 +23,11 @@ export default function AITools() {
 
   return (
     <div>
+      <Seo
+        title="The AI Tools I Actually Use | Keys to AI"
+        description="An honest, tested AI tool stack for solopreneurs — what each tool is best for, real pricing, and how I use it in my own workflow."
+        path="/ai-tools"
+      />
       {/* Hero header — dark bg */}
       <div className="bg-bg-dark py-20 md:py-28">
         <div className="max-w-[1200px] mx-auto px-6">

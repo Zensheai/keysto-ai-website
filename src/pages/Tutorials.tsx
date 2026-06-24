@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { site } from "../content";
+import Seo from "../components/Seo";
 import { initReveals } from "../lib/animations";
 
 const { tutorialsPage } = site;
@@ -26,6 +27,11 @@ export default function Tutorials() {
 
   return (
     <div>
+      <Seo
+        title="AI Tutorials for Solopreneurs | Keys to AI"
+        description="Step-by-step AI tutorials for solopreneurs — Claude, HeyGen, ElevenLabs, and the workflows that save real hours. No coding required."
+        path="/tutorials"
+      />
       {/* Hero header — dark bg */}
       <div className="bg-bg-dark py-20 md:py-28">
         <div className="max-w-[1200px] mx-auto px-6">
