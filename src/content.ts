@@ -137,6 +137,15 @@ export const site = {
   brand: { name: "Keys to AI", initial: "K", tagline: "YouTube companion hub" },
   watchUrl: YT_CHANNEL,
 
+  // Scrolling marquee band shown just below the hero. Edit/reorder freely.
+  marquee: [
+    "Solopreneur focused",
+    "No code required",
+    "Free resources",
+    "YouTube tutorials",
+    "Weekly AI workflows",
+  ],
+
   // Nav is shared. Route links use clean BrowserRouter paths; section links jump to home anchors.
   nav: [
     { label: "Home", href: "/" },

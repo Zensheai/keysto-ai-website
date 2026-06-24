@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Hero from "../components/home/Hero";
+import Marquee from "../components/home/Marquee";
 import FromTheChannel from "../components/home/FromTheChannel";
 import FeaturedTutorial from "../components/home/FeaturedTutorial";
 import SimoneQuote from "../components/home/SimoneQuote";
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Marquee />
       <FromTheChannel />
       <FeaturedTutorial />
       <SimoneQuote />

@@ -28,3 +28,20 @@
   --c-navy-600-rgb: 42 60 77;      /* #2A3C4D */
   --c-navy-500-rgb: 62 78 94;      /* #3E4E5E */
 }
+
+/* Hero marquee — seamless infinite scroll. The track renders the content twice;
+   translating it -50% moves exactly one copy, so it loops with no jump. */
+@keyframes kta-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.kta-marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: kta-marquee 38s linear infinite;
+}
+.kta-marquee:hover .kta-marquee-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .kta-marquee-track { animation: none; }
+}
