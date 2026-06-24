@@ -164,7 +164,7 @@ export const site = {
 
   hero: {
     eyebrow: "OFFICIAL COMPANION SITE FOR THE KEYS TO AI YOUTUBE CHANNEL",
-    title: ["AI Automation", "Made Simple"],
+    title: ["AI Workflows", "Made Simple"],
     subtitle:
       "The exact AI-powered workflow I used to grow Keys to AI — broken down step by step.",
     primaryCta: { label: "Watch the Full Tutorial", href: "https://youtube.com/@keystoaiOfficial" },
@@ -299,7 +299,7 @@ export const site = {
 
   footer: {
     brand: "Keys to AI",
-    tagline: "AI Automation Made Simple",
+    tagline: "AI Workflows Made Simple",
     blurb: "The official content hub for the Keys to AI YouTube channel.",
     copyright: "© 2025 Keys to AI. All rights reserved.",
     links: [

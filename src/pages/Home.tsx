@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <>
       <Seo
-        title="Keys to AI | AI Automation Made Simple"
+        title="Keys to AI | AI Workflows Made Simple"
         description="Practical AI workflows for solopreneurs. Simple enough to repeat, useful enough to save real hours — tutorials, tools, and free resources."
         path="/"
         image="/images/hero-portrait.jpg"
