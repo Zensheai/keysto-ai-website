@@ -242,7 +242,7 @@ export const site = {
   toolsLibrary: {
     eyebrow: "AI TOOLS LIBRARY",
     title: "Practical guides for the tools creators already use.",
-    cta: { label: "Get tool updates →", href: "#" },
+    cta: { label: "Get tool updates →", href: "#newsletter" },
     intro:
       "Inside Simone's creator operating system. A curated stack of AI tools I am actively testing and building with — from Kimi 2.6 for research to HeyGen for avatars. What actually works.",
     tools,
