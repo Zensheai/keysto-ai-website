@@ -88,6 +88,75 @@ function ResourceIcon({ iconKey }: { iconKey: string }) {
   );
 }
 
+// Faint per-card background graphic (10% terracotta), matched to each icon and
+// bled off the top-right corner for subtle brand texture behind the content.
+const BG_GRAPHICS: Record<string, React.ReactNode> = {
+  calendar: (
+    <>
+      <path d="M0 0h168M0 24h168M0 48h168M0 72h168M0 96h168M0 120h168M0 144h168" />
+      <path d="M0 0v168M24 0v168M48 0v168M72 0v168M96 0v168M120 0v168M144 0v168" />
+    </>
+  ),
+  clipboard: (
+    <>
+      <path d="M8 24l5 5 9-11" /><path d="M30 24h120" />
+      <path d="M8 60l5 5 9-11" /><path d="M30 60h120" />
+      <path d="M8 96l5 5 9-11" /><path d="M30 96h120" />
+      <path d="M8 132l5 5 9-11" /><path d="M30 132h120" />
+    </>
+  ),
+  command: (
+    <>
+      <rect x="44" y="16" width="100" height="140" rx="8" />
+      <path d="M58 46h72M58 70h60M58 94h72M58 118h48M58 142h64" />
+    </>
+  ),
+  play: (
+    <>
+      <path d="M40 40L100 70L60 122L140 120L40 40" />
+      <circle cx="40" cy="40" r="6" fill="currentColor" stroke="none" />
+      <circle cx="100" cy="70" r="6" fill="currentColor" stroke="none" />
+      <circle cx="60" cy="122" r="6" fill="currentColor" stroke="none" />
+      <circle cx="140" cy="120" r="6" fill="currentColor" stroke="none" />
+    </>
+  ),
+  calculator: (
+    <>
+      <rect x="50" y="14" width="104" height="26" rx="6" />
+      <circle cx="70" cy="66" r="5" fill="currentColor" stroke="none" /><circle cx="102" cy="66" r="5" fill="currentColor" stroke="none" /><circle cx="134" cy="66" r="5" fill="currentColor" stroke="none" />
+      <circle cx="70" cy="100" r="5" fill="currentColor" stroke="none" /><circle cx="102" cy="100" r="5" fill="currentColor" stroke="none" /><circle cx="134" cy="100" r="5" fill="currentColor" stroke="none" />
+      <circle cx="70" cy="134" r="5" fill="currentColor" stroke="none" /><circle cx="102" cy="134" r="5" fill="currentColor" stroke="none" /><circle cx="134" cy="134" r="5" fill="currentColor" stroke="none" />
+    </>
+  ),
+};
+
+function BgGraphic({ iconKey }: { iconKey: string }) {
+  return (
+    <svg
+      viewBox="0 0 168 168"
+      aria-hidden="true"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.25}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{
+        position: "absolute",
+        top: -22,
+        right: -22,
+        width: 168,
+        height: 168,
+        color: "#C4603A",
+        opacity: 0.1,
+        zIndex: 0,
+        pointerEvents: "none",
+      }}
+    >
+      {BG_GRAPHICS[iconKey]}
+    </svg>
+  );
+}
+
 function ResourceCard({ item }: { item: ResourceItem }) {
   const [stage, setStage] = useState<"idle" | "form" | "done">("idle");
   const [name, setName] = useState("");
@@ -120,6 +189,7 @@ function ResourceCard({ item }: { item: ResourceItem }) {
       data-reveal
       style={item.tag === "UPDATED THIS WEEK" ? { boxShadow: "inset 0 0 0 1px rgba(196,96,58,0.5)" } : undefined}
     >
+      <BgGraphic iconKey={item.iconKey} />
       <div className="resource-card__content">
         <ResourceIcon iconKey={item.iconKey} />
         <p className="font-mono text-[0.625rem] text-text-muted uppercase tracking-wider mb-2">
