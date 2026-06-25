@@ -14,12 +14,19 @@ function ScrollManager() {
 
   useEffect(() => {
     if (location.hash) {
-      // Anchor scroll — guard for element not yet mounted
+      // Anchor scroll — when navigating from another route the target section
+      // hasn't rendered yet, so poll a few frames until it exists, then scroll.
       const id = location.hash.slice(1);
-      requestAnimationFrame(() => {
+      let frames = 0;
+      const tick = () => {
         const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      });
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        } else if (frames++ < 20) {
+          requestAnimationFrame(tick);
+        }
+      };
+      requestAnimationFrame(tick);
     } else {
       window.scrollTo({ top: 0, behavior: "instant" });
     }

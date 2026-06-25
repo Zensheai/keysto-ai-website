@@ -52,14 +52,12 @@ export default function Nav() {
         {/* Desktop nav links */}
         <div className="hidden md:flex items-center gap-8">
           {site.nav.map((link) => {
-            const isAnchor = link.href.startsWith("/#");
+            // All links (routes AND home anchors like "/#workflow") go through
+            // React Router's Link so navigation stays client-side and ScrollManager
+            // handles the hash scroll. Plain <a> would hard-reload from sub-pages.
             const sharedClass = "font-body font-medium text-sm underline-offset-4 hover:underline-offset-[0.4em] transition-all duration-200";
             const sharedStyle = { color: fg, textDecoration: "underline transparent" };
-            return isAnchor ? (
-              <a key={link.label} href={link.href} className={sharedClass} style={sharedStyle}>
-                {link.label}
-              </a>
-            ) : (
+            return (
               <Link key={link.label} to={link.href} className={sharedClass} style={sharedStyle}>
                 {link.label}
               </Link>
@@ -112,14 +110,9 @@ export default function Nav() {
         >
           <div className="max-w-[1200px] mx-auto px-6 py-2 flex flex-col">
             {site.nav.map((link) => {
-              const isAnchor = link.href.startsWith("/#");
               const sharedClass = "font-body font-medium text-sm text-bg-dark";
               const sharedStyle = { padding: "0.85rem 0", borderBottom: "1px solid rgba(13,27,42,0.08)" };
-              return isAnchor ? (
-                <a key={link.label} href={link.href} onClick={() => setOpen(false)} className={sharedClass} style={sharedStyle}>
-                  {link.label}
-                </a>
-              ) : (
+              return (
                 <Link key={link.label} to={link.href} onClick={() => setOpen(false)} className={sharedClass} style={sharedStyle}>
                   {link.label}
                 </Link>
