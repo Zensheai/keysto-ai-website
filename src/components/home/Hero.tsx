@@ -6,10 +6,25 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen bg-bg-dark flex items-center overflow-hidden"
+      className="relative min-h-screen bg-bg-dark flex overflow-hidden hero-shell"
     >
-      {/* Content */}
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 py-32 w-full">
+      {/* Responsive layout via real CSS. The build has no Tailwind JIT, so new
+          utility classes (pt-28, lg:py-32, lg:hidden…) silently no-op — a scoped
+          <style> with media queries is the reliable way to do responsive here. */}
+      <style>{`
+        .hero-shell { align-items: flex-start; }
+        .hero-content { padding-top: 7rem; padding-bottom: 4rem; }
+        .hero-img-mobile { display: block; }
+        @media (min-width: 1024px) {
+          .hero-shell { align-items: center; }
+          .hero-content { padding-top: 8rem; padding-bottom: 8rem; }
+          .hero-img-mobile { display: none; }
+        }
+      `}</style>
+
+      {/* Content — top-aligned on mobile so the bottom-anchored Simone image has
+          room beneath it; vertically centered on desktop as before. */}
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 w-full hero-content">
         <div className="max-w-2xl xl:max-w-[700px]">
           <p className="font-mono text-xs text-text-muted uppercase tracking-[0.1em] mb-6">
             {hero.eyebrow}
@@ -69,6 +84,39 @@ export default function Hero() {
             inset: 0,
             background:
               "linear-gradient(to right, rgba(13,27,42,0.85) 0%, rgba(13,27,42,0.22) 20%, transparent 40%)",
+            zIndex: 10,
+            pointerEvents: "none",
+          }}
+        />
+      </div>
+
+      {/* Hero image — mobile/tablet: Simone anchored to the bottom, rising up and
+          fading into the navy. Hidden on desktop (the lg block above handles that).
+          `contain` keeps the full landscape cutout intact; the top-fade mask + navy
+          gradient blend her into the background and keep the headline legible. */}
+      <div
+        className="hero-img-mobile"
+        style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: "min(50vh, 440px)", zIndex: 0 }}
+      >
+        <img
+          alt="Simone Keys at her desk"
+          loading="eager"
+          src={hero.image}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            objectPosition: "center bottom",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 16%, black 40%)",
+            maskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 16%, black 40%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to bottom, var(--c-deep-navy) 0%, rgba(13,27,42,0.45) 20%, transparent 46%)",
             zIndex: 10,
             pointerEvents: "none",
           }}
