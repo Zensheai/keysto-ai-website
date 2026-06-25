@@ -6,6 +6,7 @@ const { resources } = site;
 
 type ResourceItem = {
   icon: string;
+  iconKey: string;
   tag: string;
   title: string;
   desc: string;
@@ -13,6 +14,79 @@ type ResourceItem = {
   file: string;
   group: string;
 };
+
+// Custom geometric line icons (one per resource), terracotta to match the
+// section accent. Replaces the OS-rendered emoji for a consistent brand look.
+const ICON_PATHS: Record<string, React.ReactNode> = {
+  calendar: (
+    <>
+      <path d="M8 3v3" /><path d="M16 3v3" />
+      <rect x="3.5" y="5" width="17" height="15.5" rx="2.5" />
+      <path d="M3.5 9.5h17" /><path d="M9.3 9.5v11" /><path d="M14.7 9.5v11" /><path d="M3.5 14h17" />
+    </>
+  ),
+  clipboard: (
+    <>
+      <rect x="9" y="2.5" width="6" height="3.5" rx="1.2" />
+      <path d="M9 4H6.5A1.5 1.5 0 0 0 5 5.5v14A1.5 1.5 0 0 0 6.5 21h11A1.5 1.5 0 0 0 19 19.5v-14A1.5 1.5 0 0 0 17.5 4H15" />
+      <path d="M8.5 12.7l2.2 2.2 4.4-4.7" />
+    </>
+  ),
+  command: (
+    <>
+      <rect x="3.5" y="4.5" width="17" height="15" rx="2.5" />
+      <path d="M8 9.5l3 2.5-3 2.5" /><path d="M13 14.5h4" />
+    </>
+  ),
+  play: (
+    <>
+      <path d="M5 6.5v9l7-4.5z" />
+      <circle cx="18" cy="7" r="1.7" /><circle cx="18" cy="16" r="1.7" />
+      <path d="M12.8 10.4l3.8-2.6" /><path d="M12.8 11.8l3.8 3.1" />
+    </>
+  ),
+  calculator: (
+    <>
+      <rect x="5.5" y="3" width="13" height="18" rx="2.2" />
+      <rect x="8" y="5.5" width="8" height="3.5" rx="1" />
+      <circle cx="9" cy="13" r="1" /><circle cx="12" cy="13" r="1" /><circle cx="15" cy="13" r="1" />
+      <circle cx="9" cy="17" r="1" /><circle cx="12" cy="17" r="1" /><circle cx="15" cy="17" r="1" />
+    </>
+  ),
+};
+
+function ResourceIcon({ iconKey }: { iconKey: string }) {
+  return (
+    <span
+      className="resource-icon"
+      style={{
+        display: "inline-flex",
+        width: 40,
+        height: 40,
+        borderRadius: 11,
+        background: "rgba(196,96,58,0.12)",
+        color: "#C4603A",
+        alignItems: "center",
+        justifyContent: "center",
+        marginBottom: 14,
+      }}
+    >
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.6}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        {ICON_PATHS[iconKey]}
+      </svg>
+    </span>
+  );
+}
 
 function ResourceCard({ item }: { item: ResourceItem }) {
   const [stage, setStage] = useState<"idle" | "form" | "done">("idle");
@@ -41,9 +115,13 @@ function ResourceCard({ item }: { item: ResourceItem }) {
   }
 
   return (
-    <div className="resource-card" data-reveal>
+    <div
+      className="resource-card"
+      data-reveal
+      style={item.tag === "UPDATED THIS WEEK" ? { boxShadow: "inset 0 0 0 1px rgba(196,96,58,0.5)" } : undefined}
+    >
       <div className="resource-card__content">
-        <span className="text-accent-amber text-xl mb-3 block">{item.icon}</span>
+        <ResourceIcon iconKey={item.iconKey} />
         <p className="font-mono text-[0.625rem] text-text-muted uppercase tracking-wider mb-2">
           {item.tag}
         </p>
@@ -57,7 +135,7 @@ function ResourceCard({ item }: { item: ResourceItem }) {
             onClick={() => setStage("form")}
             className="font-body font-medium text-sm text-accent-amber hover:underline underline-offset-4 cursor-pointer bg-transparent border-none p-0"
           >
-            {item.cta}
+            {item.cta.replace(/\s*→\s*$/, "")} <span className="resource-arrow">→</span>
           </button>
         )}
 
@@ -179,6 +257,7 @@ export default function Resources() {
       id="resources"
       className="bg-bg-dark py-[clamp(5rem,10vh,8rem)] relative overflow-hidden"
     >
+      <style>{`.resource-icon{transition:transform .2s ease}.resource-card:hover .resource-icon{transform:translateY(-3px)}.resource-arrow{display:inline-block;transition:transform .2s ease}.resource-card:hover .resource-arrow{transform:translateX(4px)}.resource-card:hover:before,.resource-card:hover:after{opacity:0}`}</style>
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="mb-6" data-reveal>
