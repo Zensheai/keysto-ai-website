@@ -34,7 +34,7 @@ const tools = [
     pros: ["Excellent context memory", "Great for long-form", "Clean interface"],
     cons: ["Still testing reliability", "Fewer integrations than Claude"],
     cta: "Try Kimi 2.6 →",
-    link: "#",
+    link: "https://kimi.com",
   },
   {
     icon: "📁",

@@ -146,6 +146,14 @@ export default function AITools() {
                           {tool.pricing}
                         </span>
                       </div>
+                      <a
+                        href={tool.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-auto inline-flex items-center gap-1 font-body font-medium text-sm text-bg-dark hover:text-accent-teal transition-colors"
+                      >
+                        {tool.cta}
+                      </a>
                     </div>
                   </div>
 
