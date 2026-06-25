@@ -42,17 +42,20 @@ export default async function handler(req, res) {
       body: JSON.stringify(payload),
     });
 
+    // MailerLite's API upserts: a new OR already-existing subscriber returns 200/201.
     if (r.status === 200 || r.status === 201) {
       res.status(200).json({ ok: true, message: "You're in! Check your inbox." });
       return;
     }
-    if (r.status === 422) {
-      // Validation error (often: already subscribed) — treat as success for UX.
-      res.status(200).json({ ok: true, message: "You're already on the list — thanks!" });
-      return;
-    }
+
+    // Anything else is a genuine failure (e.g. 422 = invalid group id or field).
+    // Log MailerLite's actual response to the Vercel function logs so the real
+    // reason is visible — NEVER silently mask a rejection as success.
+    const detail = await r.text().catch(() => "");
+    console.error(`MailerLite subscribe failed: ${r.status} ${detail}`);
     res.status(200).json({ ok: false, message: "Something went wrong. Please try again." });
-  } catch {
+  } catch (err) {
+    console.error("MailerLite subscribe network error:", err);
     res.status(200).json({ ok: false, message: "Network error. Please try again." });
   }
 }

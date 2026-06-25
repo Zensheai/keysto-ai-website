@@ -296,7 +296,8 @@ export const site = {
     note: "No spam. Unsubscribe anytime.",
     placeholder: "you@example.com",
     // MailerLite "Newsletter" group — routes signups so the welcome automation fires.
-    group: "191214763962795807",
+    // NOTE: this is the GROUP id, not the automation id. (Automation id is 191214763962795807.)
+    group: "191213484469388463",
   },
 
   footer: {
