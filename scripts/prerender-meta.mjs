@@ -80,9 +80,9 @@ const FAQ_ITEMS = [
 
 // Blog Article/Video schema — keep in sync with src/content.ts → site.blog.posts
 const BLOG_SCHEMA = {
-  "/blog/claude-desktop-setup": { headline: "Stop Re-Explaining Yourself to Claude: The Desktop Setup That Actually Works", image: "/images/tutorial-claude.jpg", datePublished: "2025-06-01", videoId: "6tZTOkPWZ7o" },
-  "/blog/8-ai-tools-solopreneur": { headline: "The Only 8 AI Tools You Need as a Solopreneur", image: "/images/tutorial-tools.jpg", datePublished: "2025-05-25", videoId: "VquszjmTFrU" },
-  "/blog/heygen-ai-avatar": { headline: "Bring Your AI Avatar to Life with HeyGen", image: "/images/tutorial-avatar.jpg", datePublished: "2025-05-18", videoId: "R0EmUT4EX2g" },
+  "/blog/claude-desktop-setup": { headline: "Stop Re-Explaining Yourself to Claude: The Desktop Setup That Actually Works", image: "/images/tutorial-claude.jpg", datePublished: "2025-06-01T09:00:00-07:00", videoId: "6tZTOkPWZ7o" },
+  "/blog/8-ai-tools-solopreneur": { headline: "The Only 8 AI Tools You Need as a Solopreneur", image: "/images/tutorial-tools.jpg", datePublished: "2025-05-25T09:00:00-07:00", videoId: "VquszjmTFrU" },
+  "/blog/heygen-ai-avatar": { headline: "Bring Your AI Avatar to Life with HeyGen", image: "/images/tutorial-avatar.jpg", datePublished: "2025-05-18T09:00:00-07:00", videoId: "R0EmUT4EX2g" },
 };
 
 const ORG = { "@type": "Organization", name: "Keys to AI", url: SITE, logo: { "@type": "ImageObject", url: `${SITE}/favicon.png` } };
