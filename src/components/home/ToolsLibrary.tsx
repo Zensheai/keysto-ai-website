@@ -33,9 +33,12 @@ export default function ToolsLibrary() {
         {/* Tool cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {toolsLibrary.tools.map((tool) => (
-            <div
+            <a
               key={tool.name}
-              className="group bg-surface border border-border-subtle rounded-2xl p-5 hover:border-accent-teal hover:shadow-glow-teal hover:-translate-y-0.5 transition-all duration-250" data-reveal
+              href={tool.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block bg-surface border border-border-subtle rounded-2xl p-5 hover:border-accent-teal hover:shadow-glow-teal hover:-translate-y-0.5 transition-all duration-250" data-reveal
             >
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-xl">{tool.icon}</span>
@@ -55,7 +58,7 @@ export default function ToolsLibrary() {
               <p className="font-mono text-[0.6875rem] text-text-muted">
                 {tool.homeOneLiner}
               </p>
-            </div>
+            </a>
           ))}
         </div>
       </div>
