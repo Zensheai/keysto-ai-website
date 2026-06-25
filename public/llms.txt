@@ -1,0 +1,28 @@
+# Keys to AI
+
+> Keys to AI teaches solopreneurs and one-person businesses how to use AI to automate their work — with practical, no-code workflows they can repeat. It is the companion site to the Keys to AI YouTube channel (@KeystoAIOfficial). Tagline: AI Workflows Made Simple.
+
+Keys to AI publishes free, step-by-step tutorials and resources. The brand's content is hosted by Simone Keys, an AI avatar and educator (Keys to AI is transparent that Simone is AI-generated). Every workflow taught is one the brand actually uses — "simple enough to repeat, useful enough to save real hours."
+
+## What Keys to AI covers
+- No-code AI workflows for solopreneurs, creators, and small businesses
+- Tool tutorials: Claude (writing and automation), HeyGen (AI avatars and video), ElevenLabs (AI voice), Make.com (workflow automation), and Notion (business organization)
+- Free downloadable resources: planning worksheets, prompt packs, automation checklists, and an interactive solopreneur toolkit
+
+## Best for
+Solopreneurs and small business owners — beginner to intermediate with AI — who want to save time on repetitive tasks, create content with AI, and build repeatable systems using affordable, no-code tools.
+
+## Key pages
+- Home: https://keysto.ai/
+- Tutorials: https://keysto.ai/tutorials
+- AI Tools (reviewed stack): https://keysto.ai/ai-tools
+- Blog (written guides): https://keysto.ai/blog
+- Free resources: https://keysto.ai/#resources
+
+## Blog articles
+- Stop Re-Explaining Yourself to Claude — The Desktop Setup That Actually Works: https://keysto.ai/blog/claude-desktop-setup
+- The Only 8 AI Tools You Need as a Solopreneur: https://keysto.ai/blog/8-ai-tools-solopreneur
+- Bring Your AI Avatar to Life with HeyGen: https://keysto.ai/blog/heygen-ai-avatar
+
+## Publishing
+New tutorials weekly on YouTube; a newsletter every Monday with the single AI workflow worth your time that week.
