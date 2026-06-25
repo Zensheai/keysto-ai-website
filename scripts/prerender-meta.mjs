@@ -96,6 +96,35 @@ const esc = (s) =>
 
 const ldScript = (obj) => `<script type="application/ld+json">${JSON.stringify(obj)}</script>`;
 
+// Sitewide Organization + WebSite. Injected here (post-build) for every page
+// because Vite strips an inline ld+json <script> from index.html during build.
+const SITEWIDE_LD = ldScript({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE}/#organization`,
+      name: "Keys to AI",
+      url: SITE,
+      logo: `${SITE}/favicon.png`,
+      description:
+        "Keys to AI teaches solopreneurs and small businesses practical, no-code AI workflows using tools like Claude, HeyGen, ElevenLabs, Make.com, and Notion.",
+      sameAs: [
+        "https://youtube.com/@keystoaiOfficial",
+        "https://x.com/to_keys94370",
+        "https://www.instagram.com/keystoaiofficial/",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      name: "Keys to AI",
+      url: SITE,
+      publisher: { "@id": `${SITE}/#organization` },
+    },
+  ],
+});
+
 function blogLd(path, r) {
   const b = BLOG_SCHEMA[path];
   if (!b) return "";
@@ -151,7 +180,7 @@ function buildHtml(r) {
   html = html.replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${url}$2`);
   html = html.replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${img}$2`);
   const ld = blogLd(r.path, r);
-  const head = `    <link rel="canonical" href="${url}" />\n    <meta name="twitter:title" content="${esc(r.title)}" />\n    <meta name="twitter:description" content="${esc(r.description)}" />\n    <meta name="twitter:image" content="${img}" />\n${ld ? `    ${ld}\n` : ""}  </head>`;
+  const head = `    <link rel="canonical" href="${url}" />\n    <meta name="twitter:title" content="${esc(r.title)}" />\n    <meta name="twitter:description" content="${esc(r.description)}" />\n    <meta name="twitter:image" content="${img}" />\n    ${SITEWIDE_LD}\n${ld ? `    ${ld}\n` : ""}  </head>`;
   html = html.replace("</head>", head);
   return html;
 }
@@ -166,7 +195,7 @@ for (const r of routes) {
 
 // Home: inject FAQPage into dist/index.html (left untouched by the loop above)
 const homePath = join(DIST, "index.html");
-const home = readFileSync(homePath, "utf8").replace("</head>", `    ${faqLd()}\n  </head>`);
+const home = readFileSync(homePath, "utf8").replace("</head>", `    ${SITEWIDE_LD}\n    ${faqLd()}\n  </head>`);
 writeFileSync(homePath, home, "utf8");
 
 console.log(`prerender-meta: wrote ${count} per-route HTML files + FAQPage on home`);
