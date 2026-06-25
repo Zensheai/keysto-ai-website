@@ -157,7 +157,7 @@ function BgGraphic({ iconKey }: { iconKey: string }) {
   );
 }
 
-function ResourceCard({ item }: { item: ResourceItem }) {
+function ResourceCard({ item, centered }: { item: ResourceItem; centered?: boolean }) {
   const [stage, setStage] = useState<"idle" | "form" | "done">("idle");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -185,9 +185,8 @@ function ResourceCard({ item }: { item: ResourceItem }) {
 
   return (
     <div
-      className="resource-card"
+      className={`resource-card${item.tag === "UPDATED THIS WEEK" ? " resource-card--featured" : ""}${centered ? " resource-card--centered" : ""}`}
       data-reveal
-      style={item.tag === "UPDATED THIS WEEK" ? { boxShadow: "inset 0 0 0 1px rgba(196,96,58,0.5)" } : undefined}
     >
       <BgGraphic iconKey={item.iconKey} />
       <div className="resource-card__content">
@@ -327,7 +326,18 @@ export default function Resources() {
       id="resources"
       className="bg-bg-dark py-[clamp(5rem,10vh,8rem)] relative overflow-hidden"
     >
-      <style>{`.resource-icon{transition:transform .2s ease}.resource-card:hover .resource-icon{transform:translateY(-3px)}.resource-arrow{display:inline-block;transition:transform .2s ease}.resource-card:hover .resource-arrow{transform:translateX(4px)}.resource-card:hover:before,.resource-card:hover:after{opacity:0}`}</style>
+      <style>{`
+        .resource-card{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+        .resource-card:hover{transform:translateY(-5px);border-color:rgba(196,96,58,.6);box-shadow:0 14px 30px -12px rgba(0,0,0,.6)}
+        .resource-card:hover:before,.resource-card:hover:after{opacity:0}
+        .resource-card--featured{box-shadow:inset 0 0 0 1px rgba(196,96,58,.5)}
+        .resource-card--featured:hover{box-shadow:inset 0 0 0 1px rgba(196,96,58,.75),0 14px 30px -12px rgba(0,0,0,.6)}
+        .resource-icon{transition:transform .22s ease}
+        .resource-card:hover .resource-icon{transform:translateY(-4px)}
+        .resource-arrow{display:inline-block;transition:transform .22s ease}
+        .resource-card:hover .resource-arrow{transform:translateX(6px)}
+        @media(min-width:768px){.resource-card--centered{grid-column:1 / -1;max-width:calc(50% - 12px);margin-inline:auto}}
+      `}</style>
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         {/* Header */}
         <div className="mb-6" data-reveal>
@@ -348,7 +358,11 @@ export default function Resources() {
         {/* Resource cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {resources.items.map((item, i) => (
-            <ResourceCard key={i} item={item as ResourceItem} />
+            <ResourceCard
+              key={i}
+              item={item as ResourceItem}
+              centered={i === resources.items.length - 1 && resources.items.length % 2 === 1}
+            />
           ))}
         </div>
       </div>
