@@ -11,6 +11,7 @@ export default function SimoneQuote() {
           <div className="section-entrance">
             <video
               className="w-full aspect-[4/5] object-cover rounded-2xl shadow-inner bg-bg-dark"
+              style={{ objectPosition: "center top" }}
               src={simone.video}
               poster={simone.image}
               controls
