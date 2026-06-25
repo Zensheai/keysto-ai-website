@@ -1,4 +1,9 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { site } from "../../content";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const { system } = site;
 
@@ -8,8 +13,93 @@ const rowDirections = ["md:flex-row", "md:flex-row-reverse", "md:flex-row"];
 const badgeColors = ["bg-accent-amber", "bg-accent-teal", "bg-accent-amber"];
 
 export default function TheSystem() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const ctx = gsap.context(() => {
+      // 1. Header fades up from 40px below on entrance
+      gsap.from(".workflow-header", {
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: { trigger: el, start: "top 75%" },
+      });
+
+      // 2. Gradient timeline line draws top→bottom, tied to scroll
+      gsap.fromTo(
+        ".timeline-line-fill",
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          ease: "none",
+          transformOrigin: "top",
+          scrollTrigger: {
+            trigger: ".timeline-track",
+            start: "top 70%",
+            end: "bottom 60%",
+            scrub: true,
+          },
+        }
+      );
+
+      // 4. Dots spring/pop into place with a slight overshoot
+      gsap.utils.toArray<HTMLElement>(".phase-dot").forEach((dot) => {
+        gsap.fromTo(
+          dot,
+          { scale: 0, opacity: 0, xPercent: -50 },
+          {
+            scale: 1,
+            opacity: 1,
+            xPercent: -50,
+            duration: 0.6,
+            ease: "back.out(2)",
+            scrollTrigger: { trigger: dot, start: "top 85%" },
+          }
+        );
+      });
+    }, el);
+
+    // 3. Cards slide in from alternating sides (up from below on mobile)
+    const cards = gsap.utils.toArray<HTMLElement>(el.querySelectorAll(".phase-card"));
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 768px)", () => {
+      cards.forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          x: i % 2 === 0 ? -80 : 80,
+          scale: 0.92,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: { trigger: card, start: "top 82%" },
+        });
+      });
+    });
+    mm.add("(max-width: 767px)", () => {
+      cards.forEach((card) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 50,
+          scale: 0.92,
+          duration: 0.7,
+          ease: "power3.out",
+          scrollTrigger: { trigger: card, start: "top 88%" },
+        });
+      });
+    });
+
+    return () => {
+      ctx.revert();
+      mm.revert();
+    };
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       id="workflow"
       className="bg-bg-dark py-[clamp(5rem,10vh,8rem)] overflow-hidden"
     >
