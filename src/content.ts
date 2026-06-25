@@ -166,7 +166,7 @@ export const site = {
     eyebrow: "OFFICIAL COMPANION SITE FOR THE KEYS TO AI YOUTUBE CHANNEL",
     title: ["AI Workflows", "Made Simple"],
     subtitle:
-      "The exact AI-powered workflow I used to grow Keys to AI — broken down step by step.",
+      "I teach solopreneurs how to use AI to run and grow their business — no-code tools like Claude, HeyGen, ElevenLabs, and more — broken down step by step. No tech background required.",
     primaryCta: { label: "Watch the Full Tutorial", href: "https://youtube.com/@keystoaiOfficial" },
     secondaryCta: { label: "Get the Free Worksheet", href: "#resources" },
     scrollCue: "SCROLL",
