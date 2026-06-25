@@ -222,7 +222,7 @@ export const site = {
     name: "Simone Keys",
     role: "Creator, Keys to AI",
     image: "/images/creator-portrait.jpg",
-    video: "/videos/simone-why-i-started.mp4",
+    video: "/videos/about-simone.mp4",
     ctaLabel: "Watch how I set it up →",
     ctaHref: "https://youtube.com/@keystoaiOfficial",
   },

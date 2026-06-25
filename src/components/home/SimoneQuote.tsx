@@ -16,7 +16,7 @@ export default function SimoneQuote() {
               controls
               playsInline
               preload="metadata"
-              aria-label="Simone Keys — why I started Keys to AI"
+              aria-label="Video from Simone Keys"
             />
           </div>
 
