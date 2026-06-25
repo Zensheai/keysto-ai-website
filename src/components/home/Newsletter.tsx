@@ -15,7 +15,7 @@ export default function Newsletter() {
     e.preventDefault();
     setIsLoading(true);
     setMessage(null);
-    const result = await subscribe(email, undefined, name.trim() || undefined);
+    const result = await subscribe(email, newsletter.group, name.trim() || undefined);
     setIsSuccess(result.ok);
     setMessage(result.message);
     setIsLoading(false);

@@ -295,6 +295,8 @@ export const site = {
     button: "Send me the weekly workflow",
     note: "No spam. Unsubscribe anytime.",
     placeholder: "you@example.com",
+    // MailerLite "Newsletter" group — routes signups so the welcome automation fires.
+    group: "191214763962795807",
   },
 
   footer: {
