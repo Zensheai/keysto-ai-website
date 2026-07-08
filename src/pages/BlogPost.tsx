@@ -55,7 +55,17 @@ export default function BlogPost() {
             className="font-mono text-text-muted"
             style={{ fontSize: 12, letterSpacing: "0.08em", textTransform: "uppercase", margin: "1.5rem 0 0.75rem" }}
           >
-            {post.category} · {post.date} · {post.readTime}
+            {post.category} · {post.readTime}
+          </div>
+          <div
+            className="font-body text-text-muted"
+            style={{ fontSize: 14, margin: "0 0 0.75rem" }}
+          >
+            By <a href="/about" style={{ color: "var(--c-terracotta)", textDecoration: "none" }}>{post.author}</a>
+            {" · Published "}
+            <time dateTime={post.date}>{post.date}</time>
+            {" · Updated "}
+            <time dateTime={post.dateModified}>{post.dateModified}</time>
           </div>
           <h1 className="font-display text-bg-warm" style={{ fontSize: "clamp(1.75rem,4vw,3rem)", lineHeight: 1.1, letterSpacing: "-0.01em", marginBottom: "1rem" }}>
             {post.title}
@@ -117,6 +127,25 @@ export default function BlogPost() {
             }
             return null;
           })}
+
+          {/* Article FAQ — mirrored as FAQPage JSON-LD at build time */}
+          {post.faq && post.faq.length > 0 && (
+            <section style={{ marginTop: "3rem" }}>
+              <h2 className="font-display text-bg-dark" style={{ fontSize: "clamp(1.4rem,3vw,1.875rem)", lineHeight: 1.25, marginBottom: "1.25rem" }}>
+                Frequently asked questions
+              </h2>
+              {post.faq.map((f, i) => (
+                <details key={i} open style={{ borderBottom: "1px solid rgba(13,27,42,0.10)", padding: "0.9rem 0" }}>
+                  <summary className="font-body" style={{ fontWeight: 600, fontSize: "1.0625rem", color: "var(--c-deep-navy)", cursor: "pointer" }}>
+                    {f.q}
+                  </summary>
+                  <p className="font-body text-text-muted" style={{ fontSize: "1rem", lineHeight: 1.7, margin: "0.6rem 0 0" }}>
+                    {f.a}
+                  </p>
+                </details>
+              ))}
+            </section>
+          )}
 
           {/* End-of-post CTA */}
           {post.postCta && (

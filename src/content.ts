@@ -19,8 +19,8 @@ export type ArticleBlock =
 const tools = [
   {
     icon: "✨",
-    name: "Kimi 2.6",
-    homeName: "Kimi 2.6",
+    name: "Kimi K2.6",
+    homeName: "Kimi K2.6",
     badge: "TESTING",
     category: "RESEARCH & WRITING",
     blurb:
@@ -29,17 +29,17 @@ const tools = [
     bestFor: "Long-form writing, research synthesis, content drafts",
     pricing: "Free tier available; paid plans for heavy use",
     whyIUseIt:
-      "I test every AI writing tool that hits the market. Kimi 2.6 has the best grasp of context for long-form content — it remembers what you told it 10 messages ago, which matters when you are building a 2000-word script.",
+      "I test every AI writing tool that hits the market. Kimi K2.6 has the best grasp of context for long-form content — it remembers what you told it 10 messages ago, which matters when you are building a 2000-word script.",
     workflow: "Drop research notes → ask for outline → refine with follow-ups → export draft",
     pros: ["Excellent context memory", "Great for long-form", "Clean interface"],
     cons: ["Still testing reliability", "Fewer integrations than Claude"],
-    cta: "Try Kimi 2.6 →",
+    cta: "Try Kimi K2.6 →",
     link: "https://kimi.com",
   },
   {
     icon: "📁",
-    name: "Claude Code Desktop",
-    homeName: "Claude Code Desktop",
+    name: "Claude Desktop",
+    homeName: "Claude Desktop",
     badge: "CORE SYSTEM",
     category: "DEEP WORK",
     blurb:
@@ -52,7 +52,7 @@ const tools = [
     workflow: "Create Project → save system prompt → add research files → iterate inside the project",
     pros: ["Project-based organization", "Massive context window", "Excellent at following instructions"],
     cons: ["No native web browsing", "Can be verbose"],
-    cta: "Try Claude Code Desktop →",
+    cta: "Try Claude Desktop →",
     link: "https://claude.ai",
   },
   {
@@ -122,7 +122,7 @@ const tools = [
       "The calm home base for keeping tutorials, content plans, AI workflows, and brand assets organized in one system.",
     homeOneLiner: "Ideas, scripts, resources, and publishing status",
     bestFor: "Content planning, knowledge base, project management",
-    pricing: "Free for personal use; Plus at $8/month",
+    pricing: "Free for personal use; Plus from $10/month",
     whyIUseIt:
       "Every creator needs a calm home base. Notion is mine. I track video ideas, script drafts, resource links, and publishing schedules in one place. The AI features inside Notion are getting better too — I use them for quick summaries.",
     workflow: "Ideas database → content calendar → scripts → resources library → publish tracker",
@@ -130,6 +130,44 @@ const tools = [
     cons: ["Can become a mess without discipline", "Mobile app is slow"],
     cta: "Try Notion →",
     link: "https://notion.so",
+  },
+  {
+    icon: "🎨",
+    name: "Canva",
+    homeName: "Canva",
+    badge: "VISUALS",
+    category: "DESIGN",
+    blurb:
+      "The design tool behind every thumbnail, social post, and lead magnet on Keys to AI. Design once, reuse the visual language everywhere.",
+    homeOneLiner: "Thumbnails + social graphics + lead magnets",
+    bestFor: "Thumbnails, social posts, lead magnets, quick video edits",
+    pricing: "Free plan; Pro at $15/month",
+    whyIUseIt:
+      "I design once, then reuse the same visual language across everything. Thumbnails, worksheets, social posts — Canva keeps my brand consistent without a designer. I even use it for quick video edits and captions on avatar clips.",
+    workflow: "Brand kit → template → duplicate for each new video → export",
+    pros: ["Fast, reusable templates", "Brand kit keeps everything consistent", "Handles quick video edits too"],
+    cons: ["Advanced editing is limited", "Easy to over-design"],
+    cta: "Try Canva →",
+    link: "https://canva.com",
+  },
+  {
+    icon: "📊",
+    name: "Airtable",
+    homeName: "Airtable",
+    badge: "TRACKER",
+    category: "CONTENT OPS",
+    blurb:
+      "The structured tracker for my whole content pipeline — what's filmed, edited, published, and ready to repurpose.",
+    homeOneLiner: "Content pipeline + status tracking + repurposing queue",
+    bestFor: "Content pipelines, structured tracking, publishing databases",
+    pricing: "Free plan; Team at $20/month",
+    whyIUseIt:
+      "Notion holds my ideas; Airtable keeps me honest. Every video moves through a pipeline — scripted, filmed, edited, published, repurposed — and a structured view shows me exactly what's stuck and what's ready to ship.",
+    workflow: "New idea record → status field per stage → filtered views → repurpose queue",
+    pros: ["Structured views keep the pipeline honest", "Powerful filters and automations", "Plays well with Make.com"],
+    cons: ["Per-seat pricing adds up on teams", "Overkill for a simple list"],
+    cta: "Try Airtable →",
+    link: "https://airtable.com",
   },
 ];
 
@@ -152,6 +190,7 @@ export const site = {
     { label: "Tutorials", href: "/tutorials" },
     { label: "AI Tools", href: "/ai-tools" },
     { label: "Blog", href: "/blog" },
+    { label: "About", href: "/about" },
     { label: "Workflows", href: "/#workflow" },
     { label: "Resources", href: "/#resources" },
   ],
@@ -244,7 +283,7 @@ export const site = {
     title: "Practical guides for the tools creators already use.",
     cta: { label: "Get tool updates →", href: "#newsletter" },
     intro:
-      "Inside Simone's creator operating system. A curated stack of AI tools I am actively testing and building with — from Kimi 2.6 for research to HeyGen for avatars. What actually works.",
+      "Inside Simone's creator operating system. A curated stack of AI tools I am actively testing and building with — from Kimi K2.6 for research to HeyGen for avatars. What actually works.",
     tools,
   },
 
@@ -252,7 +291,7 @@ export const site = {
     eyebrow: "NEW HERE? START HERE",
     title: "Your first three steps.",
     steps: [
-      { n: "01", title: "Watch the Setup Tutorial", body: "See exactly how I configure Claude Desktop for deep work — the same setup I use every day.", cta: "Watch Now", href: "https://youtube.com" },
+      { n: "01", title: "Watch the Setup Tutorial", body: "See exactly how I configure Claude Desktop for deep work — the same setup I use every day.", cta: "Watch Now", href: YT_CHANNEL },
       { n: "02", title: "Download the Worksheet", body: "Get the AI content planning worksheet + automation audit checklist to turn what you learn into action.", cta: "Get the Worksheets", href: "#resources" },
       { n: "03", title: "Join the Newsletter", body: "One email a week with the single AI workflow worth your time — straight from my own stack.", cta: "Subscribe", href: "#newsletter" },
     ],
@@ -280,7 +319,7 @@ export const site = {
     title: "Questions, answered.",
     items: [
       { q: "Who are these workflows for?", a: "These workflows are built for solopreneurs, creators, and one-person business owners who want to use AI to save hours every week. You don't need to be technical — every tutorial is designed to be followed step by step." },
-      { q: "Do I need to know how to code?", a: "Not at all. The tools I teach — Claude, Notion, Canva, Zapier, Airtable — are all no-code. If you can follow a recipe, you can follow these workflows." },
+      { q: "Do I need to know how to code?", a: "Not at all. The tools I teach — Claude, Notion, Canva, Make.com, Airtable — are all no-code. If you can follow a recipe, you can follow these workflows." },
       { q: "Are the resources really free?", a: "Yes, 100%. The worksheets, prompt packs, and checklists are all free downloads. I create them as companions to my YouTube tutorials so you can turn what you watch into what you actually do." },
       { q: "What makes Keys to AI different from other AI tutorials?", a: "I only teach systems I actually use in my own business. If a workflow can't survive a busy week, it doesn't make the cut. Simple enough to repeat, useful enough to save real hours." },
       { q: "How often do you publish new tutorials?", a: "I publish new tutorials weekly on YouTube, and the newsletter goes out every Monday with the single AI workflow worth your time that week." },
@@ -309,9 +348,60 @@ export const site = {
       { label: "YouTube", href: YT_CHANNEL },
       { label: "Tutorials", href: "/tutorials" },
       { label: "AI Tools", href: "/ai-tools" },
+      { label: "About", href: "/about" },
       { label: "Resources", href: "/#resources" },
     ],
     miniNewsletter: { eyebrow: "Get one AI workflow every week", title: "Join the newsletter", button: "Subscribe" },
+  },
+
+
+  // ── Page: /about ──
+  aboutPage: {
+    metaTitle: "About Keys to AI — Who We Are & How It Works | Keys to AI",
+    metaDescription:
+      "Keys to AI teaches solopreneurs practical, no-code AI workflows. Meet Simone Keys — our AI-generated host, built with the exact tools we teach — and see how every tutorial gets made.",
+    eyebrow: "ABOUT KEYS TO AI",
+    title: "Hey — welcome to Keys to AI.",
+    intro:
+      "We teach solopreneurs how to use AI to run and grow a one-person business. Real workflows, no code, no fluff — simple enough to repeat, useful enough to save real hours.",
+    image: "/images/creator-portrait.jpg",
+    sections: [
+      {
+        h2: "What Keys to AI is",
+        paragraphs: [
+          "Keys to AI is the companion site to the Keys to AI YouTube channel. Every week we publish a step-by-step tutorial that takes one AI workflow — planning content with Claude, building an avatar in HeyGen, automating admin with Make.com — and breaks it down so you can follow it like a recipe.",
+          "Here's the thing: most AI content is either hype or theory. We only publish systems we actually run in our own business. If a workflow can't survive a busy week, it doesn't make the cut.",
+        ],
+      },
+      {
+        h2: "Meet Simone Keys — and yes, she's AI",
+        paragraphs: [
+          "Simone Keys, the host you see in every video, is an AI-generated avatar. Her face is built with HeyGen. Her voice is built with ElevenLabs. Her scripts are drafted with Claude — using the exact same workflows we teach on the channel.",
+          "That's not a gimmick; it's the proof. Keys to AI is a real, independent one-person business, and Simone is what happens when a solopreneur actually uses the AI stack we recommend. Every tutorial you watch was made with the tools it teaches. You feel me?",
+        ],
+      },
+      {
+        h2: "Who this is for",
+        paragraphs: [
+          "Solopreneurs, creators, and one-person business owners — beginner to intermediate with AI — who are time-starved and tired of tool overwhelm. You don't need a tech background. If you can follow a recipe, you can follow these workflows.",
+        ],
+      },
+      {
+        h2: "How to get the most out of this site",
+        paragraphs: [
+          "Start with the Claude Desktop setup tutorial — it's the foundation every other workflow builds on. Then grab the free worksheets and prompt packs, browse the AI tools library for honest reviews with real pricing, and join the Monday newsletter: one email, one workflow worth your time.",
+        ],
+      },
+    ],
+    callout: {
+      label: "Our transparency promise",
+      text: "We will always tell you what's AI-made and what isn't. Simone is AI-generated and we say so everywhere. Tool recommendations are based on what we actually use — when a link earns us a commission, we'll disclose it.",
+    },
+    cta: {
+      text: "Want to see how a one-person business runs on AI? Start with the tutorials.",
+      label: "Watch the tutorials →",
+      href: "/tutorials",
+    },
   },
 
   // ── Page: /ai-tools ──
@@ -345,7 +435,7 @@ export const site = {
   // ── Page: /blog (listing + article detail pages) ──
   blog: {
     eyebrow: "BLOG",
-    title: "Written tutorials for Google search.",
+    title: "Every tutorial, written down.",
     intro: "Every video becomes a blog post. Read the summary, watch the full tutorial, download the resources.",
     posts: [
       {
@@ -359,6 +449,13 @@ export const site = {
         cta: "Read post →",
         image: "/images/tutorial-claude.jpg",
         videoId: "6tZTOkPWZ7o",
+        author: "Simone Keys",
+        dateModified: "2026-06-24",
+        faq: [
+          { q: "What is a Claude Project?", a: "A Project is a workspace inside Claude where you save a system prompt, reference files, and all related conversations. Everything inside the project shares that context, so Claude remembers who you are and how you work without re-explaining." },
+          { q: "Do I need a paid Claude plan to use Projects?", a: "Projects are available on claude.ai including the free tier, but paid plans give you more usage and larger file uploads. The setup in this guide works the same on any plan." },
+          { q: "How many projects should a solopreneur create?", a: "Start with two or three: one for content, one for research, and one for client or admin work. Each gets its own system prompt tuned to that task — that separation is what keeps the output consistent." },
+        ],
         postCta: { text: "Download the AI Content Planning Worksheet to use alongside this setup.", label: "Get the worksheet →", href: "/#resources" },
         body: [
           { type: "p", text: "If you use Claude for work, you have felt this pain: you open a new chat, and you are right back at square one. Re-explaining your project, your voice, your constraints. Every. Single. Time." },
@@ -400,6 +497,13 @@ export const site = {
         cta: "Read post →",
         image: "/images/tutorial-tools.jpg",
         videoId: "VquszjmTFrU",
+        author: "Simone Keys",
+        dateModified: "2026-06-24",
+        faq: [
+          { q: "How much does this 8-tool stack cost per month?", a: "Just over $100/month at full list prices — but almost every tool here has a free tier. Start free, then upgrade only the one or two tools that are clearly saving you the most hours." },
+          { q: "Which AI tool should a solopreneur start with?", a: "Claude. It covers the widest range of daily work — writing, research, planning, analysis — and the Projects feature means the time you invest in setup pays off in every future session." },
+          { q: "Do I really need all eight tools?", a: "No. Start with Claude plus Notion and add tools only when a specific task keeps eating your time. The rule: don't add a new tool until an existing one is clearly failing." },
+        ],
         postCta: { text: "See detailed reviews of each tool in the AI Tools Library.", label: "Browse AI Tools →", href: "/ai-tools" },
         body: [
           { type: "p", text: "The AI tool market is overwhelming. Every week there is a new \"game-changer\" that promises to 10x your productivity. Most of them are noise." },
@@ -407,8 +511,8 @@ export const site = {
           { type: "h2", text: "1. Claude (The Brain)" },
           { type: "p", text: "Claude is my thinking partner. I use it for research, writing, analysis, and brainstorming. The Projects feature is what makes it indispensable — I have separate projects for content, research, and client work." },
           { type: "callout", label: "Why it matters", text: "Claude has the largest context window and best instruction-following of any AI I have tested. When you give it a good system prompt, it consistently produces output that sounds like you." },
-          { type: "h2", text: "2. Kimi 2.6 (The Researcher)" },
-          { type: "p", text: "I am actively testing Kimi 2.6 for long-form research and writing. Its context memory is exceptional — it remembers details from 20+ messages back, which matters when you are building a 2000-word piece." },
+          { type: "h2", text: "2. Kimi K2.6 (The Researcher)" },
+          { type: "p", text: "I am actively testing Kimi K2.6 for long-form research and writing. Its context memory is exceptional — it remembers details from 20+ messages back, which matters when you are building a 2000-word piece." },
           { type: "h2", text: "3. HeyGen (The Avatar)" },
           { type: "p", text: "For avatar-based videos, HeyGen is the best I have found. The lip-sync is genuinely impressive, and the avatars look natural — not uncanny. I use it for explainer content where being on camera is not the priority." },
           { type: "h2", text: "4. ElevenLabs (The Voice)" },
@@ -436,6 +540,13 @@ export const site = {
         cta: "Read post →",
         image: "/images/tutorial-avatar.jpg",
         videoId: "R0EmUT4EX2g",
+        author: "Simone Keys",
+        dateModified: "2026-06-24",
+        faq: [
+          { q: "How much does HeyGen cost?", a: "HeyGen has a free plan for testing, and paid plans start at $24/month. If you publish avatar videos regularly, the paid tier is what unlocks the length and quality you need." },
+          { q: "Can I use my own voice with a HeyGen avatar?", a: "Yes — two ways. Record your voice directly in HeyGen, or clone your voice in ElevenLabs, export the audio as an MP3, and upload it. The ElevenLabs route gives noticeably better voice quality." },
+          { q: "How long does it take to create an avatar video?", a: "Under 10 minutes end to end once your avatar is set up: paste your script, generate, and download. Processing itself takes about 2–5 minutes depending on video length." },
+        ],
         postCta: { text: "Want the full prompt pack for writing avatar scripts?", label: "Get the Prompt Pack →", href: "/#resources" },
         body: [
           { type: "p", text: "Faceless channels are booming, but most AI avatar tools look robotic and cheap. HeyGen is different. The avatars look natural, the lip-sync is precise, and the whole process takes under 10 minutes." },

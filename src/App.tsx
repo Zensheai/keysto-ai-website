@@ -8,6 +8,8 @@ import Tutorials from "./pages/Tutorials";
 import AITools from "./pages/AITools";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 
 function ScrollManager() {
   const location = useLocation();
@@ -35,9 +37,12 @@ function ScrollManager() {
   return null;
 }
 
-export default function App() {
+// Router-free shell: rendered inside BrowserRouter on the client (below) and
+// inside StaticRouter at build time (src/entry-server.tsx) so every route
+// ships as fully pre-rendered HTML that crawlers can read without JavaScript.
+export function AppShell() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollManager />
       <Nav />
       <Routes>
@@ -46,9 +51,19 @@ export default function App() {
         <Route path="/ai-tools" element={<AITools />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
+        <Route path="/about" element={<About />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       <Analytics />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppShell />
     </BrowserRouter>
   );
 }

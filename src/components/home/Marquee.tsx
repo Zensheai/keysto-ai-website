@@ -39,9 +39,17 @@ export default function Marquee() {
       }}
     >
       <div className="kta-marquee-track">
-        {[...run, ...run].map((label, i) => (
-          <Item key={i} label={label} />
-        ))}
+        {/* First pass is real content; the looped copies are aria-hidden so
+            crawlers and screen readers read each phrase once, not 8 times. */}
+        {[...run, ...run].map((label, i) =>
+          i < site.marquee.length ? (
+            <Item key={i} label={label} />
+          ) : (
+            <span key={i} aria-hidden="true">
+              <Item label={label} />
+            </span>
+          )
+        )}
       </div>
     </div>
   );

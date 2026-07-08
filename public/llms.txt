@@ -6,7 +6,7 @@ Keys to AI publishes free, step-by-step tutorials and resources. The brand's con
 
 ## What Keys to AI covers
 - No-code AI workflows for solopreneurs, creators, and small businesses
-- Tool tutorials: Claude (writing and automation), HeyGen (AI avatars and video), ElevenLabs (AI voice), Make.com (workflow automation), and Notion (business organization)
+- Tool tutorials: Claude (writing and automation), HeyGen (AI avatars and video), ElevenLabs (AI voice), Make.com (workflow automation), Notion (business organization), Canva (design), and Airtable (content pipeline tracking)
 - Free downloadable resources: planning worksheets, prompt packs, automation checklists, and an interactive solopreneur toolkit
 
 ## Best for
@@ -14,9 +14,11 @@ Solopreneurs and small business owners — beginner to intermediate with AI — 
 
 ## Key pages
 - Home: https://keysto.ai/
+- About (who we are, transparency policy): https://keysto.ai/about
 - Tutorials: https://keysto.ai/tutorials
-- AI Tools (reviewed stack): https://keysto.ai/ai-tools
+- AI Tools (reviewed stack with pricing, pros/cons): https://keysto.ai/ai-tools
 - Blog (written guides): https://keysto.ai/blog
+- RSS feed: https://keysto.ai/rss.xml
 - Free resources: https://keysto.ai/#resources
 
 ## Blog articles
