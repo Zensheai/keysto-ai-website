@@ -1,25 +1,27 @@
 {
-  "name": "keysto-ai-website",
+  "name": "keys-to-ai-control-center",
+  "version": "0.1.0",
   "private": true,
-  "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite --port 4322",
-    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-server && node scripts/prerender.mjs",
-    "preview": "vite preview --port 4323"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@vercel/analytics": "^2.0.1",
-    "gsap": "^3.12.5",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.2"
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.50.0",
+    "next": "^15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react": "^4.3.1",
-    "typescript": "^5.5.3",
-    "vite": "^5.4.2"
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.0.12",
+    "@types/react-dom": "^19.0.4",
+    "typescript": "^5.8.3"
+  },
+  "overrides": {
+    "postcss": "8.5.26"
   }
 }
