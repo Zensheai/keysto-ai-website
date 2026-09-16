@@ -1,14 +1,15 @@
-node_modules
-dist
-.vercel
-
-# build caches / tsc -b artifacts
-*.tsbuildinfo
-vite.config.js
-vite.config.d.ts
-
-# local env
+.next/
+node_modules/
+.vercel/
 .env
 .env.local
+.env.production
+.env.*
+!.env.example
+dist/
+coverage/
+*.tsbuildinfo
 
 .vercel
+.deploy-keysto-repo/
+.publish-keysto-site/
